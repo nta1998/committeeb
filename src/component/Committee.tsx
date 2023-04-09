@@ -20,7 +20,7 @@ const Committee = () => {
   const profile = useAppSelector(selectGetProfileOne)
   const all_vote = useAppSelector(selecvote)
   const dispatch = useAppDispatch()
-  const token = localStorage.getItem("access") || ""
+  const token = localStorage.getItem("access")||""
   const [visiblepayent, setVisiblepayent] = useState(false);
   const [visiblepool, setVisiblepool] = useState(false);
   const [visiblead, setvisiblead] = useState(false)
@@ -42,7 +42,7 @@ const Committee = () => {
   const [selected, setSelected] = useState<any>("Select a survey to view")
   useEffect(() => {
   setlink_sing_up(`https://committeeb.com/singup/31214/${profile.building_id?.id}/312`)
-  setpayment_date(building?.payment_date)
+  setpayment_date(profile.building_id?.payment_date||"")
   }, [BuildingFlag])
   
   const saveEdit = () => {
@@ -95,8 +95,8 @@ const Committee = () => {
       pool.filter(pool => pool.building_id === profile.building_id?.id && pool.Title === selected?.anchorKey).map(pool => "no")
       ],
       datasets: [{
-        data: [pool.filter(pool => pool.building_id === profile.building_id?.id && pool.Title === selected?.anchorKey).map(pool => pool.no),
-        pool.filter(pool => pool.building_id === profile.building_id?.id && pool.Title === selected?.anchorKey).map(pool => pool.yes)]
+        data: [pool.filter(pool => pool.building_id === profile.building_id?.id && pool.Title === selected?.anchorKey).map(pool => pool.yes),
+        pool.filter(pool => pool.building_id === profile.building_id?.id && pool.Title === selected?.anchorKey).map(pool => pool.no)]
       }]
     }
     const options = { plugins: { legend: { labels: { usePointStyle: true } } } }
@@ -118,7 +118,7 @@ const Committee = () => {
           <Input onChange={(e) => setquestion(e.target.value)} clearable bordered labelPlaceholder="Question" />
         </Modal.Body>
         <Modal.Footer>
-          <Button auto onPress={() => dispatch(addpoolAsync({ Title, Question, token, "building_id": profile.building_id?.id || -1, yes: 0, no: 0 }))}>
+          <Button auto onClick={()=>setVisiblepool(false)} onPress={() => dispatch(addpoolAsync({ Title, Question, token, "building_id": profile.building_id?.id || -1, yes: 0, no: 0 }))}>
             add
           </Button>
         </Modal.Footer>
@@ -136,7 +136,7 @@ const Committee = () => {
           <Input onChange={(e) => setquestion(e.target.value)} clearable bordered labelPlaceholder="Question" />
         </Modal.Body>
         <Modal.Footer>
-          <Button auto onPress={() => dispatch(addadlAsync({ Title, Content: Question, token, "building_id": profile.building_id?.id || -1 }))}>
+          <Button auto onClick={()=>setvisiblead(false)} onPress={() => dispatch(addadlAsync({ Title, Content: Question, token, "building_id": profile.building_id?.id || -1 }))}>
             add
           </Button>
         </Modal.Footer>
@@ -156,7 +156,7 @@ const Committee = () => {
           <Input onChange={(e) => setprice(+e.target.value)} type="number" clearable bordered labelPlaceholder="price" />
         </Modal.Body>
         <Modal.Footer>
-          <Button auto onPress={() => dispatch(addpayadsAsync({ Title, Content, price, token, "building_id": profile.building_id?.id || -1 }))}>
+          <Button auto onClick={()=>setVisiblepayent(false)} onPress={() => dispatch(addpayadsAsync({ Title, Content, price, token, "building_id": profile.building_id?.id || -1 }))}>
             add
           </Button>
         </Modal.Footer>
@@ -175,7 +175,7 @@ const Committee = () => {
       </Col>
       <Row style={{ justifyContent: "center", padding: "3%", gap: "8%" }}>
         <Tooltip content={`${building?.vote_active ? "Close" : "Open"} vote To The Next Commiet`}>
-          <Button bordered color="warning" auto onClick={() => dispatch(voteActivAsync({ "building": building, token }))}>{building?.vote_active ? "Close" : "Open"} Vote</Button>
+          <Button bordered color="warning" auto onClick={() => dispatch(voteActivAsync({ "building": profile.building_id, token }))}>{building?.vote_active ? "Close" : "Open"} Vote</Button>
         </Tooltip>
         <Tooltip content={"Add New survey"}>
           <Button bordered color="success" auto onClick={() => setVisiblepool(true)}>Add survey</Button>
@@ -194,12 +194,12 @@ const Committee = () => {
         </Col>
         <Col>
           <Row>
-            <Input onChange={(e) => setfull_address(e.target.value)} width='60%' disabled={edit ? false : true} label="Full Address" placeholder={building?.full_address}></Input>
+            <Input onChange={(e) => setfull_address(e.target.value)} width='60%' disabled={edit ? false : true} label="Full Address" placeholder={profile.building_id?.full_address}></Input>
           </Row>
           <br />
           <br />
           <Row>
-            <Input onChange={(e) => setcommittee_phone(e.target.value)} width='40%' disabled={edit ? false : true} label="Phone Number" placeholder={building?.committee_phone}></Input>
+            <Input onChange={(e) => setcommittee_phone(e.target.value)} width='40%' disabled={edit ? false : true} label="Phone Number" placeholder={profile.building_id?.committee_phone}></Input>
           </Row>
           <br/>
           <br/>
@@ -209,7 +209,7 @@ const Committee = () => {
           <br />
           <br />
           <Row>
-            <Input onChange={(e) => setcommittee_monthly(+e.target.value)} width='30%' disabled={edit ? false : true} label="House committee rate" type={"number"} placeholder={building?.committee_monthly.toString() || ""}></Input>
+            <Input onChange={(e) => setcommittee_monthly(+e.target.value)} width='30%' disabled={edit ? false : true} label="House committee rate" type={"number"} placeholder={profile.building_id?.committee_monthly.toString() || ""}></Input>
           </Row>
           <br />
           <Row>

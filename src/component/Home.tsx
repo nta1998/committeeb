@@ -80,11 +80,11 @@ const Home = () => {
               <Input onChange={(e) => setbio(e.target.value)} clearable fullWidth bordered placeholder='bio' contentLeft={<BiOutline />} />
               <Input onChange={(e) => setfull_address(e.target.value)} clearable fullWidth bordered placeholder='full_address' contentLeft={<MdEmail />} />
               <Input onChange={(e) => setfloors(+e.target.value)} clearable fullWidth bordered placeholder='floors' contentLeft={<MdEmail />} />
-              <Input onChange={(e) => setpayment_date(e.target.value)} clearable fullWidth bordered placeholder='payment_date' contentLeft={<MdEmail />} />
+              <Input onChange={(e) => setpayment_date(e.target.value)} clearable fullWidth bordered type={"date"} placeholder='Payment date' contentLeft={<MdEmail />} />
               <Input onChange={(e) => setcommittee_monthly(+e.target.value)} clearable fullWidth bordered placeholder='committee_monthly' contentLeft={<MdEmail />} />
         </Modal.Body>
         <Modal.Footer>
-          <Button auto onClick={()=>dispatch(singupbuildingAsync({ "user": { username, email, password }, "building": {full_address,floors,payment_date,committee_monthly,"committee_apartment":apartment,"committee_name":full_name,"committee_phone":phone_number}, "profile": { full_name, bio, apartment, phone_number, pic,} }))}>
+          <Button auto onPress={()=>setVisible(false)} onClick={()=>dispatch(singupbuildingAsync({ "user": { username, email, password }, "building": {full_address,floors,payment_date,committee_monthly,"committee_apartment":apartment,"committee_name":full_name,"committee_phone":phone_number}, "profile": { full_name, bio, apartment, phone_number, pic,} }))}>
             Sign up
           </Button>
         </Modal.Footer>
@@ -203,7 +203,7 @@ const Home = () => {
                     <Card.Divider />
                     <Card.Footer>
                       <Row justify="flex-end">
-                        <Button size="sm" color="default" onClick={() => dispatch(addPaymentAdToCart(ads))}>
+                        <Button size="sm" color="default" onClick={() => dispatch(addPaymentAdToCart(payads))}>
                           Add To Cart
                         </Button>
                       </Row>

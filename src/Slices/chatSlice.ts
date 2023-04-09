@@ -24,7 +24,7 @@ const initialState: CounterState = {
   content: [],
   pop: false,
   online: [],
-  chatSocket: new WebSocket(`wss://committeeb.com/wss/chat/${profile.building_id?.id}/${profile.id}/`)
+  chatSocket: new WebSocket(`wss://committeeb.com/ws/chat/${profile.building_id?.id}/${profile.id}/`)
 };
 
 export const chatSlice = createSlice({

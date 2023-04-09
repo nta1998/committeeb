@@ -92,6 +92,12 @@ export const loginSlice = createSlice({
         refreshAsync(localStorage.getItem("refresh") || "")
          toast.error("Error trying to log in. Check the fields again",{position: "top-center"})
       })
+      .addCase(singupbuildingAsync.rejected, (state, action) => {
+         toast.error("Error Occurred. Please try again later",{position: "top-center"})
+      })
+      .addCase(singupbuildingAsync.fulfilled, (state, action) => {
+        toast.success("Connect to the system and start managing the building 👉",{position: "top-center"})
+     })
       .addCase(refreshAsync.fulfilled, (state, action) => {
         localStorage.setItem("refresh",action.payload.refresh) 
         localStorage.setItem("access",action.payload.access)

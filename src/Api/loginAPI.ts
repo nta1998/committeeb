@@ -25,7 +25,8 @@ export const singup=(user:User,profile:Profile)=>{
 }
 
 export const singupbuilding=(user:any)=>{
-  return new Promise<{ data: User }>((resolve) =>
-    axios.post(MY_server+'singup/building',user).then(res => resolve({ data: res.data }))
-  );
+  return new Promise<{ data: User }>((resolve,reject) =>
+    axios.post(MY_server+'singup/building',user).then(res => resolve({ data: res.data })).catch(error => {
+      reject(error);
+    }))
 }
