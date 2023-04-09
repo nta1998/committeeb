@@ -40,7 +40,7 @@ const Chat = () => {
                     <Card.Divider />
                     <br />
                     <Card>
-                        <User style={{ padding: "2%" }} src={`http://44.202.160.222/static${user?.profile_pic}`} name={user?.full_name} size="md" />
+                        <User style={{ padding: "2%" }} src={`https://committeeb.com/static${user?.profile_pic}`} name={user?.full_name} size="md" />
                     </Card>
                     <br />
                     <Card.Divider />
@@ -48,7 +48,7 @@ const Chat = () => {
                     <Badge enableShadow disableOutline color="success"><Text b size={15}>online</Text></Badge>
                     <br />
                     <br />
-                    {online.filter(online_users => online_users.fullname !== user.full_name).map((user, index) => <User key={index} src={`http://13.48.123.1/static/${user.img}`} name={user.fullname} size="md" />)}
+                    {online.filter(online_users => online_users.fullname !== user.full_name).map((user, index) => <User key={index} src={`https://committeeb.com/static/${user.img}`} name={user.fullname} size="md" />)}
                 </Col>
                 <Col>
                     <Card style={{ height: "580px" }}>

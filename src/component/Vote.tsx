@@ -20,7 +20,7 @@ const Vote = () => {
       <Card key={index} css={{ mw: "330px" }}>
         <Card.Header>
         <User
-        src={`http://44.202.160.222/static/images/${people.profile_id.profile_pic}`}
+        src={`https://committeeb.com/static/images/${people.profile_id.profile_pic}`}
         name={people.profile_id.full_name}
         size="md"
       />

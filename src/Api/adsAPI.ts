@@ -1,7 +1,7 @@
 import axios from "axios";
 import { Ads, Payads, Pool } from "../model/ads";
 
-const MY_server='https://committeeb.com'
+const MY_server='https://committeeb.com/'
 // A mock function to mimic making an async request for data
 export const get=(token:string)=>{
   return new Promise<{ data: Ads[] }>((resolve,reject) =>

@@ -58,7 +58,7 @@ const Cart = () => {
                             <br />
                             {!cartItems.length && !payad.length ?  <Row style={{justifyContent:"center"}}><Badge size={"xl"}>No items in the cart yet</Badge></Row> : cartItems?.map((product, index) => <><Card key={index} style={{ minHeight: "120px" }} variant="bordered">
                                 <Row>
-                                    <Col><Image width="100px" height="120px" src={`http://44.202.160.222${product.product_pic}`} /></Col>
+                                    <Col><Image width="100px" height="120px" src={`https://committeeb.com${product.product_pic}`} /></Col>
                                     <Col><Text h3 style={{ position: "absolute", left: "25%", bottom: "35%" }}>{product.name}</Text></Col>
                                     <Col><Text h6 style={{ position: "absolute", right: "15%", bottom: "5%" }}>prise : {product.price}₪</Text>
                                         <Button onClick={() => dispatch(popFromCart(product.name))} auto ghost style={{ position: "absolute", right: "5%", bottom: "45%" }} color={"error"} size={"xs"}>-</Button></Col>
