@@ -74,7 +74,7 @@ const NavbarC = () => {
         <Navbar.Item><Link to="/Ads"><Text css={{ textGradient: "45deg, $pink600 -10%, $blue600 80%" }} weight="bold">Ads</Text></Link></Navbar.Item>
         <Navbar.Item><Link to="/Chat"><Text css={{ textGradient: "45deg, $pink600 -10%, $blue600 80%" }} weight="bold">Chat</Text></Link></Navbar.Item>
         {/* <Navbar.Item><Link to="/payment"><Text css={{ textGradient: "45deg, $pink600 -10%, $blue600 80%"}} weight="bold">payment</Text></Link></Navbar.Item> */}
-       {profile.building_id?.vote_active ? <Navbar.Item><Link to="/vote"><Text css={{ textGradient: "45deg, $pink600 -10%, $blue600 80%"}} weight="bold">vote</Text></Link></Navbar.Item>:""}
+       {profile?.building_id?.vote_active ? <Navbar.Item><Link to="/vote"><Text css={{ textGradient: "45deg, $pink600 -10%, $blue600 80%"}} weight="bold">vote</Text></Link></Navbar.Item>:""}
         <Navbar.Item><Link to="/Store"><Text css={{ textGradient: "45deg, $pink600 -10%, $blue600 80%" }} weight="bold">Store</Text></Link></Navbar.Item>
         {profile?.is_committee ? <Navbar.Item><Link to="/admin"><Text css={{ textGradient: "45deg, $pink600 -10%, $blue600 80%" }} weight="bold">admin</Text></Link></Navbar.Item>:""}
       </Navbar.Content> :""}

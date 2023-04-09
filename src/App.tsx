@@ -76,7 +76,7 @@ chatSocket.onmessage = async (e) => {
   console.log(data)
   if (data.type === "user") {
       if (connect) {
-          chatSocket.send(JSON.stringify({ "command": "new_user", "new_user": { "fullname": profile?.full_name, "img": profile?.profile_pic, "profile_id": profile?.id, "building_id": profile.building_id?.id } }))
+          chatSocket.send(JSON.stringify({ "command": "new_user", "new_user": { "fullname": profile?.full_name, "img": profile?.profile_pic, "profile_id": profile?.id, "building_id": profile?.building_id?.id } }))
           chatSocket.send(JSON.stringify({ "command": "get_messages", "building_id": profile?.building_id?.id }))
           dispatch(setconnect(!connect))
       }
