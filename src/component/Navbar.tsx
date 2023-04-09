@@ -111,7 +111,7 @@ const NavbarC = () => {
                   as="button"
                   color="secondary"
                   size="md"
-                  src={"https://committeeb.com/"+profile?.profile_pic}/>
+                  src={"https://committeeb.com"+profile?.profile_pic}/>
               </Dropdown.Trigger>
             </Navbar.Item>
             <Dropdown.Menu

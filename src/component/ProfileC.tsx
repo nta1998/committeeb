@@ -50,7 +50,7 @@ const ProfileC = () => {
       <Col>{!edit ?
         <Col>
           <Col>
-            <User src={'https://committeeb.com/' + data.profile_pic} name={data.full_name} size="xl" />
+            <User src={'https://committeeb.com' + data.profile_pic} name={data.full_name} size="xl" />
             <br />
             <Col style={{ padding: '1% 25%' }}>
               <Text h4 size={20} css={{ textGradient: "45deg, $blue600 -20%, $pink600 50%", }} weight="bold">Address</Text>
