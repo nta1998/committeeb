@@ -15,7 +15,7 @@ const Store = () => {
   const [serarch, setserarch] = useState("")
   const [product_selected, setproduct_selected] = useState<Product>()
   const [Product_name, setProduct_name] = useState("")
-  const [Category, setCategory] = useState<any>()
+  const [Category, setCategory] = useState<any>("Select a category")
   const [Description, setDescription] = useState("")
   const [Price, setPrice] = useState(0)
   const [productPic, setproductPic] = useState<any>()
@@ -52,7 +52,7 @@ const Store = () => {
       <div>
         <Modal
           closeButton
-          width="50%"
+          width='60%'
           aria-labelledby="modal-title"
           aria-describedby="modal-description"
           {...bindings}
@@ -67,9 +67,7 @@ const Store = () => {
               <Col>
                 <Image
                   src={`https://committeeb.com${product_selected?.product_pic}`}
-                  width={400}
-                  height={300}
-                />
+                  css={{maxWidth:"400px",minWidth:"140px",maxHeight:"300px"}}/>
                 <br />
                 <Text h5 b style={{ marginLeft: "10%" }}>price : {product_selected?.price}₪</Text>
               </Col>
@@ -146,7 +144,7 @@ const Store = () => {
         </Modal>
       </div>
       <Row>
-        <Col style={{width:"25%"}}>
+        <Col style={{width:"250px",paddingLeft:"2%"}}>
           <br/>
           <Row><Input size='lg' width={"100%"} placeholder="Serarch" onChange={(e)=> setserarch(e.target.value)} /></Row>
           <br />
@@ -171,10 +169,14 @@ const Store = () => {
           <br/>
         </Col>
 
-        <Col>
+        <Col css={{paddingLeft:"2%"}}>
           <Grid.Container gap={2}>
-            {products.filter(product => product.profile_id.building_id === data?.building_id?.id).length  <= 0 ? <Row style={{justifyContent:"center",padding:"10%"}}><Badge size={"lg"}>No products yet</Badge></Row>:products.filter(product => product.profile_id.building_id === data?.building_id?.id && product.name.includes(serarch) &&product.category.includes(serarchCategory)).map((product, index) => <Grid xs={3}>
-              <Card key={index} onClick={() => modelView(product)} style={{ maxWidth: "250px", maxHeight: "200px", margin: "1%" }} isPressable>
+            {products.filter(product => product.profile_id.building_id === data?.building_id?.id).length  <= 0 ? 
+            <Row style={{justifyContent:"center",padding:"10%"}}><Badge size={"lg"}>No products yet</Badge></Row>
+            :
+            products.filter(product => product.profile_id.building_id === data?.building_id?.id && product.name.includes(serarch) && product.category.includes(serarchCategory)).map((product, index) =>
+             <Grid xs={3}>
+              <Card key={index} onClick={() => modelView(product)} style={{minWidth:"150px", maxWidth: "250px", maxHeight: "200px", margin: "1%" }} isPressable>
                 <Card.Body css={{ p: 0 }}>
                   <Card.Image
                     src={`https://committeeb.com${product.product_pic}`}

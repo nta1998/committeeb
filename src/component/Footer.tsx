@@ -1,5 +1,5 @@
 import React from "react";
-import { Row, Container, Col, Text, Card } from "@nextui-org/react";
+import { Row, Container, Col, Text, Card, Grid } from "@nextui-org/react";
 import { FacebookOutlined, GithubOutlined, InstagramOutlined, LinkedinOutlined } from '@ant-design/icons';
 import icon from "../static/img/icon.png"
 import { Link } from "react-router-dom";
@@ -14,23 +14,31 @@ const FooterComponent = () => {
     <Container>
       <Card>
         <Card.Body>
-        <Row style={{paddingLeft:"5%",justifyContent:"center"}}>
+        <Grid.Container gap={2} justify="center">
+        <Row style={{justifyContent:"center"}}>
+        <Grid>
           <Col style={{ padding: '1%', width: "10%" }}>
             <Link to={"/home"}><Text>Home</Text></Link>
             <Link to={"/profile"}><Text>Profile</Text> </Link>
             {profile?.is_committee ? <Link to={"/admin"}><Text>admin</Text></Link>:""}
           </Col>
+          </Grid>
+          <Grid>
           <Col style={{ padding: '1%', width: "10%" }}>
             <Link to={"Chat"}><Text>Chat</Text></Link>
             <Link to={"/store"}><Text>Store</Text></Link>
             {building?.vote_active ? <Link to={"/vote"}><Text>Vote</Text></Link>:""}
           </Col>
+          </Grid>
+          <Grid>
           <Col style={{ padding: '1%', width: "10%" }}>
             <Link to={"/Ads"}><Text>Pool</Text></Link>
             <Link to={"/Ads"}><Text>Ads</Text></Link>
             <Link to={"/Ads"}><Text>ads</Text></Link>
           </Col>
+          </Grid>
         </Row>
+        </Grid.Container>
         <br/>        
         <Row style={{display:"flex", justifyContent:"center"}}>
           <Text h5><img src={icon} height={23} alt="icon" /> Liloz Design ©2023 Created by natennel Liloz</Text>

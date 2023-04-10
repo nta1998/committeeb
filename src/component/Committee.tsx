@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Table, Row, Col, Tooltip, Text, Card, Button, Modal, Input, Badge, Dropdown } from "@nextui-org/react";
+import { Table, Row, Col, Tooltip, Text, Card, Button, Modal, Input, Badge, Dropdown, Grid } from "@nextui-org/react";
 import { editPayAsync, selectGetProfile, selectGetProfileOne } from '../Slices/profileSlice';
 import { useAppDispatch, useAppSelector } from '../app/hooks';
 import { addadlAsync, addpayadsAsync, addpoolAsync, selecpool } from '../Slices/adsSlice';
@@ -162,7 +162,7 @@ const Committee = () => {
         </Modal.Footer>
       </Modal>
 
-      <Col style={{ paddingLeft: "35%", paddingTop: "4%", paddingBottom: "3%", width: "100%" }} >
+      <Row style={{width: "100%" ,padding:"5%",justifyContent:"center"}} >
         <Card css={{ mw: "450px" }}>
           <Card.Body>
             <WhatsappShareButton
@@ -172,44 +172,53 @@ const Committee = () => {
             <Text h4>{link_sing_up}</Text>
           </Card.Body>
         </Card>
-      </Col>
-      <Row style={{ justifyContent: "center", padding: "3%", gap: "8%" }}>
+      </Row>
+      <Grid.Container gap={3} justify="center">
+        <Grid>
         <Tooltip content={`${building?.vote_active ? "Close" : "Open"} vote To The Next Commiet`}>
           <Button bordered color="warning" auto onClick={() => dispatch(voteActivAsync({ "building": profile.building_id, token }))}>{building?.vote_active ? "Close" : "Open"} Vote</Button>
         </Tooltip>
-        <Tooltip content={"Add New survey"}>
-          <Button bordered color="success" auto onClick={() => setVisiblepool(true)}>Add survey</Button>
-        </Tooltip>
-        <Tooltip content={"Add New Ad"}>
-          <Button bordered color="primary" auto onClick={() => setvisiblead(true)}>Add Ad</Button>
-        </Tooltip>
+        </Grid>
+        <Grid>
         <Tooltip content={"Add New Payment Ad"}>
           <Button bordered color="gradient" auto onClick={() => setVisiblepayent(true)}>Add Payment Ads</Button>
         </Tooltip>
-      </Row>
+        </Grid>
+        <Grid>
+        <Tooltip content={"Add New survey"}>
+          <Button bordered color="success" auto onClick={() => setVisiblepool(true)}>Add survey</Button>
+        </Tooltip>
+        </Grid>
+        <Grid>
+        <Tooltip content={"Add New Ad"}>
+          <Button bordered color="primary" auto onClick={() => setvisiblead(true)} >Add Ad</Button>
+        </Tooltip>
+        </Grid>
+        </Grid.Container >
+      
       <br />
       <Row>
-        <Col>
-          <Player src="https://cdn.lordicon.com/equajobp.json" background="transparent" speed={1} style={{ width: "300px", height: "300px" }} hover   ></Player>
+        <Col hidden={window.innerWidth < 950 ? true : false}>
+          <Player src="https://cdn.lordicon.com/equajobp.json" background="transparent" speed={1} style={{ maxWidth: "300px", maxHeight: "300px" }} hover></Player>
         </Col>
-        <Col>
+        <Col css={{paddingLeft:window.innerWidth < 950 ? "10%" : "",width:"100%"}}>
           <Row>
-            <Input onChange={(e) => setfull_address(e.target.value)} width='60%' disabled={edit ? false : true} label="Full Address" placeholder={profile.building_id?.full_address}></Input>
+            <Input onChange={(e) => setfull_address(e.target.value)} width={window.innerWidth < 950 ? "90%" : "60%"} disabled={edit ? false : true} label="Full Address" placeholder={profile.building_id?.full_address}></Input>
           </Row>
           <br />
           <br />
           <Row>
-            <Input onChange={(e) => setcommittee_phone(e.target.value)} width='40%' disabled={edit ? false : true} label="Phone Number" placeholder={profile.building_id?.committee_phone}></Input>
+            <Input onChange={(e) => setcommittee_phone(e.target.value)} width={window.innerWidth < 950 ? "60%" : "40%"} disabled={edit ? false : true} label="Phone Number" placeholder={profile.building_id?.committee_phone}></Input>
           </Row>
           <br/>
           <br/>
           <Row>
-            <Input onChange={(e) => setpayment_date(e.target.value)} width='30%' disabled={edit ? false : true} type={"date"} label="House committee payment date" value={payment_date} ></Input>
+            <Input onChange={(e) => setpayment_date(e.target.value)} width={window.innerWidth < 950 ? "50%" : "30%"} disabled={edit ? false : true} type={"date"} label="payment date" value={payment_date} ></Input>
           </Row>
           <br />
           <br />
           <Row>
-            <Input onChange={(e) => setcommittee_monthly(+e.target.value)} width='30%' disabled={edit ? false : true} label="House committee rate" type={"number"} placeholder={profile.building_id?.committee_monthly.toString() || ""}></Input>
+            <Input onChange={(e) => setcommittee_monthly(+e.target.value)} width={window.innerWidth < 950 ? "40%" : "20%"} disabled={edit ? false : true} label="House committee rate" type={"number"} placeholder={profile.building_id?.committee_monthly.toString() || ""}></Input>
           </Row>
           <br />
           <Row>
@@ -259,8 +268,7 @@ const Committee = () => {
       </Card>
       <br />
       <br />
-      <Table
-        css={{ maxWidth: "85%", margin: "0% 0% 0% 8%" }}>
+      <Table>
         <Table.Header>
           <Table.Column>user</Table.Column>
           <Table.Column>full_name</Table.Column>
@@ -278,17 +286,17 @@ const Committee = () => {
             <Table.Cell>{profile.monthly_payment ? <FcApproval /> : <FcHighPriority />}</Table.Cell>
             <Table.Cell>
               <Row>
-                <Col style={{ width: "20%" }}>
+                <Col style={{ width: "50%" }}>
                   <Tooltip content={"Delete from the current vote"}>
                     <Text h3 style={{ cursor: "pointer" }} onClick={() => dispatch(delVoteAsync({ "id": profile.id, token }))}><FcCancel /></Text>
                   </Tooltip>
                 </Col>
-                <Col style={{ width: "20%" }}>
+                <Col style={{ width: "50%" }}>
                   <Tooltip content={"Adding to the current vote"}>
                     <Text h3 style={{ cursor: "pointer" }} onClick={() => dispatch(addAsync({ vote: { "profile_id": profile.id, "building_id": profile.building_id?.id, "vote": 0 }, token }))}><GiVote /></Text>
                   </Tooltip>
                 </Col>
-                <Col style={{ width: "20%" }}>
+                <Col style={{ width: "50%" }}>
                   <Tooltip content={"Pay"}>
                     <Text h3 style={{ cursor: "pointer" }} onClick={() => dispatch(editPayAsync({ profile, token }))}><FcMoneyTransfer /></Text>
                   </Tooltip>

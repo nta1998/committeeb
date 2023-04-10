@@ -47,29 +47,20 @@ const NavbarC = () => {
   }
 
   return (
-    <Navbar isBordered variant="static">
+    <Navbar isBordered variant="sticky">
       <Navbar.Toggle showIn="sm" aria-label="toggle navigation"/>
-
       <Navbar.Brand
-        css={{
-          "@xs": {
-            w: "25%",
-          },
-        }}
-      >
+        css={{"@xs": {w: "20%"}}}>
         <Link to="/home" style={{display:"flex"}}>
         <img src={icon} alt="icon" /><Text css={{ textGradient: "1005deg, #C9EEFF -80%, #AA77FF 150%" }} weight="bold" >
           The digital committee
-
         </Text></Link>
       </Navbar.Brand>
       {is_log ? <Navbar.Content
         enableCursorHighlight
         activeColor="secondary"
         hideIn="sm"
-        variant="highlight-rounded"
-      >
-
+        variant="highlight-rounded">
         <Navbar.Item><Link to="/home"><Text css={{ textGradient: "45deg, $pink600 -10%, $blue600 80%" }} weight="bold">Home</Text></Link></Navbar.Item>
         <Navbar.Item><Link to="/Ads"><Text css={{ textGradient: "45deg, $pink600 -10%, $blue600 80%" }} weight="bold">Ads</Text></Link></Navbar.Item>
         <Navbar.Item><Link to="/Chat"><Text css={{ textGradient: "45deg, $pink600 -10%, $blue600 80%" }} weight="bold">Chat</Text></Link></Navbar.Item>
@@ -78,14 +69,7 @@ const NavbarC = () => {
         <Navbar.Item><Link to="/Store"><Text css={{ textGradient: "45deg, $pink600 -10%, $blue600 80%" }} weight="bold">Store</Text></Link></Navbar.Item>
         {profile?.is_committee ? <Navbar.Item><Link to="/admin"><Text css={{ textGradient: "45deg, $pink600 -10%, $blue600 80%" }} weight="bold">admin</Text></Link></Navbar.Item>:""}
       </Navbar.Content> :""}
-      <Navbar.Content
-        css={{
-          "@xs": {
-            w: "18%",
-            jc: "flex-end",
-          },
-        }}
-      >
+      <Navbar.Content>
         {is_log ? <>
           <Switch
           onChange={(e)=> dispatch(colorThemeChange(e.target.checked))}
@@ -97,7 +81,7 @@ const NavbarC = () => {
           <Link to={"/cart"}>
           <Badge color="error" content={(Cart?.length||0) + (payad?.length||0)}>
           <Player
-            speed={1}
+            speed={2}
             hover
             src="https://cdn.lordicon.com/lpddubrl.json"
             style={{ height: '50px', width: '50px' }}/>
@@ -178,7 +162,6 @@ const NavbarC = () => {
                   </Modal.Footer>
               </Modal>
             </div>
-
           </Navbar.Item>}
         <Navbar.Collapse>
         <Navbar.Link href='/home'><Text css={{ textGradient: "45deg, $pink600 -10%, $blue600 80%" }} weight="bold">Home</Text></Navbar.Link>
