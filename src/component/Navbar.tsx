@@ -138,7 +138,7 @@ const NavbarC = () => {
                 closeButton
                 aria-labelledby="modal-title"
                 open={visible}
-                width={"90%"}
+                width={window.innerWidth < 950 ? "80%" : "25%"}
                 onClose={closeHandler}>
                 <Modal.Header>
                   <Text id="modal-title" size={18}>

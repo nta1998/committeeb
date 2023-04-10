@@ -23,6 +23,7 @@ import { AiOutlineUser } from 'react-icons/ai';
 import { RiLockPasswordFill } from 'react-icons/ri';
 import { MdEmail } from 'react-icons/md';
 import { ToastContainer } from 'react-toastify';
+import confetti from 'canvas-confetti';
 
 const Home = () => {
   const is_login = useAppSelector(selectlog)
@@ -53,6 +54,11 @@ const Home = () => {
   const [floors, setfloors] = useState(0)
   const [payment_date, setpayment_date] = useState("")
   const [committee_monthly, setcommittee_monthly] = useState(0)
+
+  const handleConfetti = () => {
+    confetti({decay:0.9,particleCount:1000,spread:360,ticks:200,zIndex:100})
+    // dispatch(singupbuildingAsync({ "user": { username, email, password }, "building": { full_address, floors, payment_date, committee_monthly, "committee_apartment": apartment, "committee_name": full_name, "committee_phone": phone_number }, "profile": { full_name, bio, apartment, phone_number, pic, } }))
+  };
   return (
     <Container>
       <Modal
@@ -60,7 +66,7 @@ const Home = () => {
         blur
         aria-labelledby="modal-title"
         open={visible}
-        width={window.innerWidth < 950 ? "90%" : "40%"}
+        width={window.innerWidth < 950 ? "90%" : "30%"}
         onClose={closeHandler}
         >
         <Modal.Header>
@@ -85,7 +91,7 @@ const Home = () => {
           <Input onChange={(e) => setcommittee_monthly(+e.target.value)} clearable fullWidth bordered placeholder='committee_monthly' contentLeft={<MdEmail />} />
         </Modal.Body>
         <Modal.Footer>
-          <Button auto onPress={() => setVisible(false)} onClick={() => dispatch(singupbuildingAsync({ "user": { username, email, password }, "building": { full_address, floors, payment_date, committee_monthly, "committee_apartment": apartment, "committee_name": full_name, "committee_phone": phone_number }, "profile": { full_name, bio, apartment, phone_number, pic, } }))}>
+          <Button auto onPress={() => setVisible(false)} onClick={() => handleConfetti()}>
             Sign up
           </Button>
         </Modal.Footer>
