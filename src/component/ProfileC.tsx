@@ -72,11 +72,9 @@ const ProfileC = () => {
             <br/>
                 <br/>
           </Col>
-
-
         </Col>
         :
-        <Col style={{ marginLeft: "10%" }}>
+        <Col style={{ marginLeft: "5%" }}>
         
             <Col>
               <Upload

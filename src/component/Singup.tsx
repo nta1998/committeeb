@@ -1,4 +1,4 @@
-import { Button, Card, Col, Container, Input, Row, Text } from '@nextui-org/react'
+import { Button, Card, Col, Container, Grid, Input, Row, Text } from '@nextui-org/react'
 import React, { useState } from 'react'
 import { AiOutlineUser } from 'react-icons/ai';
 import { RiLockPasswordFill } from 'react-icons/ri';
@@ -28,31 +28,47 @@ const Singup = () => {
   const { id } = useParams()
   return (
     <Container>
-       <ToastContainer/>
-      <Row>
-        <Col style={{ padding: "10% 5% 0% 0%" }}>
-          <br />
-          <br />
-          <Player src="https://cdn.lordicon.com/vtmsmyks.json" background="transparent" speed={1} style={{ position: "absolute", left: "0.1%", top: "34%", width: "50px", height: "40px" }} autoplay loop></Player>
-          <Player src="https://cdn.lordicon.com/fihkmkwt.json" background="transparent" speed={1} style={{ position: "absolute", left: "0.1%", top: "41%", width: "50px", height: "40px" }} autoplay loop></Player>
-          <Player src="https://cdn.lordicon.com/pimvysaa.json" background="transparent" speed={1} style={{ position: "absolute", left: "0.1%", top: "47%",  width: "50px", height: "40px"}} autoplay loop></Player>
-          <Player src="https://cdn.lordicon.com/ejnrjovh.json" background="transparent" speed={1} style={{ width: "50px", height: "40px", position: "absolute", left: "0.1%", top: "54%" }} autoplay loop></Player>
-          <Player src="https://cdn.lordicon.com/kjkiqtxg.json" background="transparent" speed={1} style={{ position: "absolute", left: "0.1%", top: "61%", width: "50px", height: "40px" }} autoplay loop></Player>
-          <Player src="https://cdn.lordicon.com/twopqjaj.json" background="transparent" speed={1} style={{ position: "absolute", left: "0.1%", top: "70%",  width: "50px", height: "40px" }} autoplay loop></Player>
-          <Player src="https://cdn.lordicon.com/bfmwpqst.json" background="transparent" speed={1} style={{ position: "absolute", left: "0.1%", top: "78%",  width: "60px", height: "70px"}} autoplay loop></Player>
-          <Col style={{padding:"0% 5% 0% 10%"}}>
-          <Text h1 size={50} css={{ textGradient: "45deg, $yellow600 -20%, $red600 100%" }} weight="bold">The digital committee</Text>
-            <Text size={20} css={{ textGradient: "45deg, $blue500 -30%, $pink500 30%" }}>Are you tired of the house committee chasing you </Text>
-            <Text size={20} css={{ textGradient: "45deg, $blue500 -40%, $pink500 40%" }}>all in one place? </Text>
-            <Text size={20} css={{ textGradient: "45deg, $blue500 -50%, $pink500 50%" }}>You can pay everything</Text>
-            <Text size={20} css={{ textGradient: "45deg, $blue500 -60%, $pink500 60%" }}>see all the building's ads</Text>
-            <Text size={20} css={{ textGradient: "45deg, $blue500 -70%, $pink500 70%" }}>talk in a group chat that includes all the members of your building. </Text>
-            <Text size={20} css={{ textGradient: "45deg, $blue500 -80%, $pink500 80%" }}>Enter your details here to join the rest of your building </Text>
-            <Text size={35} css={{ textGradient: "45deg, $pink600 -30%, $blue500 90%" }} b>because today everything is digital</Text>
+      <ToastContainer />
+      <br/>
+      <br/>
+      <Row> 
+        <Grid.Container gap={3}>
+        <Grid>
+          <Col style={{ padding: "2%" }}>  <Text b size={50} css={{ textGradient: "45deg, $yellow600 -20%, $red600 100%", width: "1%" }} weight="bold">The digital committee</Text>
+            <br/>
+            <br/>
+            <br/>
+            <Row>
+              <Player src="https://cdn.lordicon.com/vtmsmyks.json" background="transparent" speed={1} style={{ position: "relative", width: "50px", height: "40px" }} autoplay loop />
+              <Text size={20} css={{ textGradient: "45deg, $blue500 -30%, $pink500 30%" }}>Are you tired of the house committee chasing you </Text></Row>
+            <Row>
+              <Player src="https://cdn.lordicon.com/fihkmkwt.json" background="transparent" speed={1} style={{ position: "relative", margin: "5% 0%", width: "50px", height: "40px" }} autoplay loop />
+              <Text size={20} css={{ textGradient: "45deg, $blue500 -40%, $pink500 40%" }}>all in one place? </Text>
+            </Row>
+            <Row>
+              <Player src="https://cdn.lordicon.com/pimvysaa.json" background="transparent" speed={1} style={{ position: "relative", margin: "5% 0%", width: "50px", height: "40px" }} autoplay loop />
+              <Text size={20} css={{ textGradient: "45deg, $blue500 -50%, $pink500 50%" }}>You can pay everything</Text>
+            </Row>
+            <Row>
+              <Player src="https://cdn.lordicon.com/ejnrjovh.json" background="transparent" speed={1} style={{ position: "relative", margin: "5% 0%", width: "50px", height: "40px" }} autoplay loop />
+              <Text size={20} css={{ textGradient: "45deg, $blue500 -60%, $pink500 60%" }}>see all the building's ads</Text>
+            </Row>
+            <Row>
+              <Player src="https://cdn.lordicon.com/kjkiqtxg.json" background="transparent" speed={1} style={{ position: "relative", margin: "5% 0%", width: "50px", height: "40px" }} autoplay loop />
+              <Text size={20} css={{ textGradient: "45deg, $blue500 -70%, $pink500 70%" }}>talk in a group chat that includes all the members of your building. </Text>
+            </Row>
+            <Row>
+              <Player src="https://cdn.lordicon.com/twopqjaj.json" background="transparent" speed={1} style={{ position: "relative", margin: "5% 0%", width: "50px", height: "40px" }} autoplay loop />
+              <Text size={20} css={{ textGradient: "45deg, $blue500 -80%, $pink500 80%" }}>Enter your details here to join the rest of your building </Text>
+            </Row>
+            <Row>
+              <Player src="https://cdn.lordicon.com/bfmwpqst.json" background="transparent" speed={1} style={{ position: "relative", margin: "5% 0%", width: "60px", height: "70px" }} autoplay loop />
+              <Text size={35} css={{ textGradient: "45deg, $pink600 -30%, $blue500 90%" }} b>because today everything is digital</Text>
+            </Row>
           </Col>
-        </Col>
-        <Col>
-          <Card css={{ mw: "420px", margin: "25% 0% 0% 5%" }}>
+        </Grid>
+        <Grid>
+          <Card css={{ minWidth:"400px", margin: "15% 0% 0% 0%" }}>
             <Card.Body>
               <Input onChange={(e) => setusername(e.target.value)} clearable fullWidth bordered placeholder='Username' contentLeft={<AiOutlineUser />} />
               <br />
@@ -72,9 +88,10 @@ const Singup = () => {
               <Button color="warning" auto onClick={() => dispatch(singuphAsync({ "singupData": { username, email, password }, "profile": { full_name, bio, apartment, phone_number, pic, "building_id": id } }))}>singup</Button>
             </Card.Body>
           </Card>
-        </Col>
-
+        </Grid>
+      </Grid.Container>
       </Row>
+
     </Container>
   )
 }

@@ -54,14 +54,15 @@ const Home = () => {
   const [payment_date, setpayment_date] = useState("")
   const [committee_monthly, setcommittee_monthly] = useState(0)
   return (
-    <Container gap={0}>
+    <Container>
       <Modal
         closeButton
         blur
         aria-labelledby="modal-title"
         open={visible}
+        width={window.innerWidth < 950 ? "90%" : "40%"}
         onClose={closeHandler}
-      >
+        >
         <Modal.Header>
           <Text id="modal-title" size={18}>
             Sing Up To
@@ -92,7 +93,7 @@ const Home = () => {
       <br />
       {is_login ?
         <Container>
-          <Row gap={1}>
+          <Row>
             <Col>
               <Text h1 css={{ textGradient: "45deg, $blue600 -20%, $pink600 50%" }} weight="bold">Chat</Text>
               <Card css={{ w: "100%", h: "400px" }} variant="bordered">
