@@ -78,7 +78,7 @@ export const loginSlice = createSlice({
   extraReducers: (builder) => {
     builder
     .addCase(singuphAsync.fulfilled, (state, action) => {
-        window.location.href = "https://main.d26h4905dv8gvt.amplifyapp.com/home"
+        window.location.href = "/"
     })
     .addCase(singuphAsync.rejected, (state, action) => {
       toast.error("Error Occurred. Please try again later",{position: "top-center"})

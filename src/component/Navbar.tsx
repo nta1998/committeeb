@@ -48,7 +48,7 @@ const NavbarC = () => {
 
   return (
     <Navbar isBordered variant="static">
-      <Navbar.Toggle showIn="sm" aria-label="toggle navigation" />
+      <Navbar.Toggle showIn="sm" aria-label="toggle navigation"/>
 
       <Navbar.Brand
         css={{
@@ -181,12 +181,13 @@ const NavbarC = () => {
 
           </Navbar.Item>}
         <Navbar.Collapse>
-          <Navbar.CollapseItem><Link to="/home"><Text css={{ textGradient: "45deg, $blue600 -20%, $pink600 50%" }} weight="bold">Home</Text></Link></Navbar.CollapseItem>
-          <Navbar.CollapseItem><Link to="/Login"><Text css={{ textGradient: "45deg, $blue600 -20%, $pink600 50%" }} weight="bold">Login</Text></Link></Navbar.CollapseItem>
-          <Navbar.CollapseItem><Link to="/Ads"><Text css={{ textGradient: "45deg, $blue600 -20%, $pink600 50%" }} weight="bold">Ads</Text></Link></Navbar.CollapseItem>
-          <Navbar.CollapseItem><Link to="/Chat"><Text css={{ textGradient: "45deg, $blue600 -20%, $pink600 50%" }} weight="bold">Chat</Text></Link></Navbar.CollapseItem>
-          <Navbar.CollapseItem><Link to="/vote"><Text css={{ textGradient: "45deg, $blue600 -20%, $pink600 50%" }} weight="bold">vote</Text></Link></Navbar.CollapseItem>
-          <Navbar.CollapseItem><Link to="/Store"><Text css={{ textGradient: "45deg, $blue600 -20%, $pink600 50%" }} weight="bold">Store</Text></Link></Navbar.CollapseItem>
+        <Navbar.Link href='/home'><Text css={{ textGradient: "45deg, $pink600 -10%, $blue600 80%" }} weight="bold">Home</Text></Navbar.Link>
+        <Navbar.Link href="/Ads"><Text css={{ textGradient: "45deg, $pink600 -10%, $blue600 80%" }} weight="bold">Ads</Text></Navbar.Link>
+        <Navbar.Link href="/Chat"><Text css={{ textGradient: "45deg, $pink600 -10%, $blue600 80%" }} weight="bold">Chat</Text></Navbar.Link>
+        {/* <Navbar.Item><Link to="/payment"><Text css={{ textGradient: "45deg, $pink600 -10%, $blue600 80%"}} weight="bold">payment</Text></Navbar.Link> */}
+       {profile?.building_id?.vote_active ? <Navbar.Link href="/vote"><Text css={{ textGradient: "45deg, $pink600 -10%, $blue600 80%"}} weight="bold">vote</Text></Navbar.Link>:""}
+        <Navbar.Link href="/Store"><Text css={{ textGradient: "45deg, $pink600 -10%, $blue600 80%" }} weight="bold">Store</Text></Navbar.Link>
+        {profile?.is_committee ? <Navbar.Link href="/admin"><Text css={{ textGradient: "45deg, $pink600 -10%, $blue600 80%" }} weight="bold">admin</Text></Navbar.Link>:""}
         </Navbar.Collapse>
       </Navbar.Content>
       <Navbar.Collapse>
