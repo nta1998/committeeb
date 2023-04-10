@@ -29,8 +29,9 @@ root.render(
       <BrowserRouter>
         <Routes>
           <Route path="/singup/31214/:id/312" element={<Singup />} />
-          <Route path="" element={<App />}>
-            <Route path="/Home" element={<Home />} />
+          <Route path="" element={<App/>}>
+            <Route index element={<Home />} />
+            <Route index path="/Home" element={<Home />} />
             <Route path="/Ads" element={<Ads />} />
             <Route path="/Chat" element={<Chat />} />
             <Route path="/vote" element={<Vote />} />

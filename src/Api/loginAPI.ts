@@ -19,9 +19,9 @@ export const refreshp=(refresh:string)=>{
     }))
 }
 export const singup=(user:User,profile:Profile)=>{
-  return new Promise<{ data: User }>((resolve) =>
-    axios.post(MY_server+"singup/",{user,profile}).then(res => resolve({ data: res.data }))
-  );
+  return new Promise<{ data: User }>((resolve,reject) =>
+    axios.post(MY_server+"singup/",{user,profile}).then(res => resolve({ data: res.data })).catch(error => {
+      reject(error);}))
 }
 
 export const singupbuilding=(user:any)=>{

@@ -41,7 +41,7 @@ const Committee = () => {
   const flagVote = useAppSelector(selecVoteflag)
   const [selected, setSelected] = useState<any>("Select a survey to view")
   useEffect(() => {
-  setlink_sing_up(`https://committeeb.com/singup/31214/${profile.building_id?.id}/312`)
+  setlink_sing_up(`https://main.d26h4905dv8gvt.amplifyapp.com/singup/31214/${profile.building_id?.id}/312`)
   setpayment_date(profile.building_id?.payment_date||"")
   }, [BuildingFlag])
   

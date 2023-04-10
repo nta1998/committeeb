@@ -31,9 +31,7 @@ const Chat = () => {
     }
     return (
         <Container gap={0} style={{ padding: "3%" }}>
-
             <Row gap={1} >
-
                 <Col style={{ paddingRight: "1%", display: `${window.innerWidth < 950 ? "none" : ""}` }} span={3} >
                     <Card><Text h3 css={{padding: "2%" ,textAlign:"center",textGradient: "1005deg, #C9EEFF -80%, #AA77FF 150%" }} b>{user?.building_id?.full_address || ""}</Text></Card>
                     <br />
@@ -48,7 +46,7 @@ const Chat = () => {
                     <Badge enableShadow disableOutline color="success"><Text b size={15}>online</Text></Badge>
                     <br />
                     <br />
-                    {online.filter(online_users => online_users.fullname !== user.full_name).map((user, index) => <User key={index} src={`https://committeeb.com/static/${user.img}`} name={user.fullname} size="md" />)}
+                    {online.filter(online_users => online_users.fullname !== user.full_name).map((user, index) => <User key={index} src={`https://committeeb.com/static${user.img}`} name={user.fullname} size="md" />)}
                 </Col>
                 <Col>
                     <Card style={{ height: "580px" }}>

@@ -12,6 +12,7 @@ import { BsImage } from 'react-icons/bs';
 import { useParams } from 'react-router-dom';
 import { useAppDispatch } from '../app/hooks';
 import { singuphAsync } from '../Slices/loginSlice';
+import { ToastContainer } from 'react-toastify';
 
 const Singup = () => {
   const [username, setusername] = useState("")
@@ -27,16 +28,18 @@ const Singup = () => {
   const { id } = useParams()
   return (
     <Container>
+       <ToastContainer/>
       <Row>
         <Col style={{ padding: "10% 5% 0% 0%" }}>
           <br />
           <br />
-          <Player src="https://cdn.lordicon.com/vtmsmyks.json" background="transparent" speed={1} style={{ position: "absolute", left: "0.1%", top: "39%", width: "50px", height: "40px" }} autoplay loop></Player>
-          <Player src="https://cdn.lordicon.com/fihkmkwt.json" background="transparent" speed={1} style={{ position: "absolute", left: "0.1%", top: "46%", width: "50px", height: "40px" }} autoplay loop></Player>
-          <Player src="https://cdn.lordicon.com/pimvysaa.json" background="transparent" speed={1} style={{ position: "absolute", left: "0.1%", top: "52%",  width: "50px", height: "40px"}} autoplay loop></Player>
-          <Player src="https://cdn.lordicon.com/ejnrjovh.json" background="transparent" speed={1} style={{ width: "50px", height: "40px", position: "absolute", left: "0.1%", top: "59%" }} autoplay loop></Player>
-          <Player src="https://cdn.lordicon.com/kjkiqtxg.json" background="transparent" speed={1} style={{ position: "absolute", left: "0.1%", top: "67%", width: "50px", height: "40px" }} autoplay loop></Player>
-          <Player src="https://cdn.lordicon.com/twopqjaj.json" background="transparent" speed={1} style={{ position: "absolute", left: "0.1%", top: "77%",  width: "50px", height: "40px" }} autoplay loop></Player>
+          <Player src="https://cdn.lordicon.com/vtmsmyks.json" background="transparent" speed={1} style={{ position: "absolute", left: "0.1%", top: "34%", width: "50px", height: "40px" }} autoplay loop></Player>
+          <Player src="https://cdn.lordicon.com/fihkmkwt.json" background="transparent" speed={1} style={{ position: "absolute", left: "0.1%", top: "41%", width: "50px", height: "40px" }} autoplay loop></Player>
+          <Player src="https://cdn.lordicon.com/pimvysaa.json" background="transparent" speed={1} style={{ position: "absolute", left: "0.1%", top: "47%",  width: "50px", height: "40px"}} autoplay loop></Player>
+          <Player src="https://cdn.lordicon.com/ejnrjovh.json" background="transparent" speed={1} style={{ width: "50px", height: "40px", position: "absolute", left: "0.1%", top: "54%" }} autoplay loop></Player>
+          <Player src="https://cdn.lordicon.com/kjkiqtxg.json" background="transparent" speed={1} style={{ position: "absolute", left: "0.1%", top: "61%", width: "50px", height: "40px" }} autoplay loop></Player>
+          <Player src="https://cdn.lordicon.com/twopqjaj.json" background="transparent" speed={1} style={{ position: "absolute", left: "0.1%", top: "70%",  width: "50px", height: "40px" }} autoplay loop></Player>
+          <Player src="https://cdn.lordicon.com/bfmwpqst.json" background="transparent" speed={1} style={{ position: "absolute", left: "0.1%", top: "78%",  width: "60px", height: "70px"}} autoplay loop></Player>
           <Col style={{padding:"0% 5% 0% 10%"}}>
           <Text h1 size={50} css={{ textGradient: "45deg, $yellow600 -20%, $red600 100%" }} weight="bold">The digital committee</Text>
             <Text size={20} css={{ textGradient: "45deg, $blue500 -30%, $pink500 30%" }}>Are you tired of the house committee chasing you </Text>
@@ -45,12 +48,11 @@ const Singup = () => {
             <Text size={20} css={{ textGradient: "45deg, $blue500 -60%, $pink500 60%" }}>see all the building's ads</Text>
             <Text size={20} css={{ textGradient: "45deg, $blue500 -70%, $pink500 70%" }}>talk in a group chat that includes all the members of your building. </Text>
             <Text size={20} css={{ textGradient: "45deg, $blue500 -80%, $pink500 80%" }}>Enter your details here to join the rest of your building </Text>
-            <Player src="https://cdn.lordicon.com/bfmwpqst.json" background="transparent" speed={1} style={{ position: "absolute", left: "0.1%", top: "86%",  width: "60px", height: "70px"}} autoplay loop></Player>
             <Text size={35} css={{ textGradient: "45deg, $pink600 -30%, $blue500 90%" }} b>because today everything is digital</Text>
           </Col>
         </Col>
         <Col>
-          <Card css={{ mw: "420px", margin: "15% 0% 0% 5%" }}>
+          <Card css={{ mw: "420px", margin: "25% 0% 0% 5%" }}>
             <Card.Body>
               <Input onChange={(e) => setusername(e.target.value)} clearable fullWidth bordered placeholder='Username' contentLeft={<AiOutlineUser />} />
               <br />
