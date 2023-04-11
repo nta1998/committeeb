@@ -2,7 +2,7 @@ import { useAppSelector, useAppDispatch } from '../app/hooks';
 import { selectlog, loguot, selectsingup, singuphAsync } from '../Slices/loginSlice';
 import { Navbar, Button, Text, Avatar, Dropdown, Modal, Input, Row, Checkbox, Badge,Switch } from "@nextui-org/react";
 import { Link } from 'react-router-dom';
-import { colorThemeChange, selectGetProfileOne } from '../Slices/profileSlice';
+import { colorThemeChange, seleccolor, selectGetProfileOne } from '../Slices/profileSlice';
 import React,{ useEffect, useState } from 'react';
 import { loginAsync, remember, to_singup } from '../Slices/loginSlice';
 import { AiOutlineUser } from 'react-icons/ai';
@@ -17,6 +17,7 @@ import icon from "../static/img/icon.png"
 import { ToastContainer } from 'react-toastify';
 const NavbarC = () => {
   const profile = useAppSelector(selectGetProfileOne)
+  const colorM = useAppSelector(seleccolor)
   const Cart = useAppSelector(selecCart)
   const payad = useAppSelector(selecPayAds)
   const is_log = useAppSelector(selectlog)
@@ -71,7 +72,7 @@ const NavbarC = () => {
       </Navbar.Content> :""}
       <Navbar.Content>
         {is_log ? <>
-          <Switch
+          <Switch style={{display:window.innerWidth < 950 ? "none" : "block" }}
           onChange={(e)=> dispatch(colorThemeChange(e.target.checked))}
           checked={false}
           size="sm"
@@ -99,6 +100,7 @@ const NavbarC = () => {
               </Dropdown.Trigger>
             </Navbar.Item>
             <Dropdown.Menu
+           
               aria-label="User menu actions"
               color="secondary">
               <Dropdown.Item key={"username"} css={{ height: "$18" }} >
@@ -165,13 +167,23 @@ const NavbarC = () => {
             </div>
           </Navbar.Item>}
         <Navbar.Collapse>
-        <Navbar.Link href='/home'><Text css={{ textGradient: "45deg, $pink600 -10%, $blue600 80%" }} weight="bold">Home</Text></Navbar.Link>
-        <Navbar.Link href="/Ads"><Text css={{ textGradient: "45deg, $pink600 -10%, $blue600 80%" }} weight="bold">Ads</Text></Navbar.Link>
-        <Navbar.Link href="/Chat"><Text css={{ textGradient: "45deg, $pink600 -10%, $blue600 80%" }} weight="bold">Chat</Text></Navbar.Link>
+        <Navbar.Link href='/home'><Text size={30} css={{ textGradient: "45deg, $pink600 -10%, $blue600 80%" }} weight="bold">Home</Text></Navbar.Link>
+        <Navbar.Link href="/Ads"><Text size={30} css={{ textGradient: "45deg, $pink600 -10%, $blue600 80%" }} weight="bold">Ads</Text></Navbar.Link>
+        <Navbar.Link href="/Chat"><Text size={30} css={{ textGradient: "45deg, $pink600 -10%, $blue600 80%" }} weight="bold">Chat</Text></Navbar.Link>
         {/* <Navbar.Item><Link to="/payment"><Text css={{ textGradient: "45deg, $pink600 -10%, $blue600 80%"}} weight="bold">payment</Text></Navbar.Link> */}
-       {profile?.building_id?.vote_active ? <Navbar.Link href="/vote"><Text css={{ textGradient: "45deg, $pink600 -10%, $blue600 80%"}} weight="bold">vote</Text></Navbar.Link>:""}
-        <Navbar.Link href="/Store"><Text css={{ textGradient: "45deg, $pink600 -10%, $blue600 80%" }} weight="bold">Store</Text></Navbar.Link>
-        {profile?.is_committee ? <Navbar.Link href="/admin"><Text css={{ textGradient: "45deg, $pink600 -10%, $blue600 80%" }} weight="bold">admin</Text></Navbar.Link>:""}
+       {profile?.building_id?.vote_active ? <Navbar.Link href="/vote"><Text size={30}  css={{ textGradient: "45deg, $pink600 -10%, $blue600 80%"}} weight="bold">vote</Text></Navbar.Link>:""}
+        <Navbar.Link href="/Store"><Text size={30} css={{ textGradient: "45deg, $pink600 -10%, $blue600 80%" }} weight="bold">Store</Text></Navbar.Link>
+        {profile?.is_committee ? <Navbar.Link href="/admin"><Text size={30}  css={{ textGradient: "45deg, $pink600 -10%, $blue600 80%" }} weight="bold">admin</Text></Navbar.Link>:""}
+        <br/>
+        <Navbar.Item>
+              <Switch 
+          onChange={(e)=> dispatch(colorThemeChange(e.target.checked))}
+          checked={colorM}
+          size="xl"
+          color={"secondary"}
+          iconOn={<BsFillMoonFill/>}
+          iconOff={<BsFillSunFill/>}/>
+              </Navbar.Item>
         </Navbar.Collapse>
       </Navbar.Content>
       <Navbar.Collapse>

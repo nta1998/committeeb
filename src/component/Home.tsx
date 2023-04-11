@@ -56,8 +56,8 @@ const Home = () => {
   const [committee_monthly, setcommittee_monthly] = useState(0)
 
   const handleConfetti = () => {
-    confetti({decay:0.9,particleCount:1000,spread:360,ticks:200,zIndex:100})
-    // dispatch(singupbuildingAsync({ "user": { username, email, password }, "building": { full_address, floors, payment_date, committee_monthly, "committee_apartment": apartment, "committee_name": full_name, "committee_phone": phone_number }, "profile": { full_name, bio, apartment, phone_number, pic, } }))
+    confetti({ decay: 0.9, particleCount: 1000, spread: 360, ticks: 200, zIndex: 100 })
+    dispatch(singupbuildingAsync({ "user": { username, email, password }, "building": { full_address, floors, payment_date, committee_monthly, "committee_apartment": apartment, "committee_name": full_name, "committee_phone": phone_number }, "profile": { full_name, bio, apartment, phone_number, pic, } }))
   };
   return (
     <Container>
@@ -68,7 +68,7 @@ const Home = () => {
         open={visible}
         width={window.innerWidth < 950 ? "90%" : "30%"}
         onClose={closeHandler}
-        >
+      >
         <Modal.Header>
           <Text id="modal-title" size={18}>
             Sing Up To
@@ -96,7 +96,7 @@ const Home = () => {
           </Button>
         </Modal.Footer>
       </Modal>
-      <br />
+
       {is_login ?
         <Container>
           <Row>
@@ -142,11 +142,13 @@ const Home = () => {
               </Card>
             </Col>
           </Row>
+
           <Col>
-            <Row style={{ padding: "1%" }}>
-              <Link to={"/Ads"}><Text b size={50} css={{ textGradient: "45deg, $blue600 -20%, $pink600 50%" }}>Ads</Text></Link>
-            </Row>
-            <Grid.Container gap={6} justify="center">
+            <Grid.Container justify="center" gap={5}>
+              <Row style={{ padding: "1%" }}>
+                <Link to={"/Ads"}><Text b size={50} css={{ textGradient: "45deg, $blue600 -20%, $pink600 50%" }}>Ads</Text></Link>
+              </Row>
+
               <Grid>
                 <Row><Text b size={30} css={{ textGradient: "45deg, $blue600 -20%, $pink600 50%" }}>Ads</Text></Row>
                 <br />
@@ -163,8 +165,8 @@ const Home = () => {
                       <Text h6 style={{ position: "absolute", bottom: "1%", right: "3%" }} color="#889096"> {ads?.Post_time}</Text>
                     </Card.Body>
                   </Card>}
-                  </Grid>
-                  <Grid>
+              </Grid>
+              <Grid>
                 <Row><Text b size={30} css={{ textGradient: "45deg, $blue600 -20%, $pink600 50%" }}>survey</Text></Row>
                 <br />
                 <Row>
@@ -190,8 +192,8 @@ const Home = () => {
                     </Card>
                   }
                 </Row>
-                </Grid>
-                <Grid>
+              </Grid>
+              <Grid>
                 <Row ><Text b size={30} css={{ textGradient: "45deg, $blue600 -20%, $pink600 50%" }}>Payent ads</Text></Row>
                 <br />
                 {!payads ? <Card css={{ maxWidth: "330px", minWidth: "330px", minHeight: "150px", justifyContent: "center" }}><Badge css={{ marginLeft: "23%" }} size={"lg"}>No payment ads yet</Badge></Card> :
@@ -216,17 +218,15 @@ const Home = () => {
                       </Row>
                     </Card.Footer>
                   </Card>}
-                  </Grid>
-            </Grid.Container>
-          </Col>
-          <Col>
-            <Row>
-              <Link to={"/Store"}><Text size={50} b css={{ textGradient: "45deg, $blue600 -20%, $pink600 50%", padding: "1%" }} weight="bold">Store</Text></Link>
-            </Row>
-            <Row>
-              <Grid.Container gap={2} justify="center">
-                {!products.length ? <Card css={{ minWidth: "1000px", minHeight: "450px", justifyContent: "center" }}><Badge css={{ marginLeft: "45%" }} size={"lg"}>No products yet</Badge></Card> : products.filter(product => product.profile_id.building_id === profile?.building_id?.id).map((product, index) => index < 12 ? <Grid xs={2} key={index} >
-                  <Card onClick={() => dispatch(addToCart(product))} style={{minWidth:"160px", maxWidth: "250px", maxHeight: "200px", margin: "1%" }} isPressable>
+              </Grid>
+
+              <Row>
+                <Link to={"/Store"}><Text size={50} b css={{ textGradient: "45deg, $blue600 -20%, $pink600 50%", padding: "1%" }} weight="bold">Store</Text></Link>
+              </Row>
+              {!products.length ? <Card css={{ maxWidth: "330px", minWidth: "330px", minHeight: "150px", justifyContent: "center" }}><Badge css={{ marginLeft: "45%" }} size={"lg"}>No products yet</Badge></Card> : ""}
+              <Grid.Container gap={1} justify="center">
+                {products.filter(product => product.profile_id.building_id === profile?.building_id?.id).map((product, index) => <Grid>
+                  <Card onClick={() => dispatch(addToCart(product))} style={{ minWidth: window.innerWidth < 950 ? "130px" : "170px", maxWidth: window.innerWidth < 950 ? "130px" : "170px" ,minHeight: window.innerWidth < 950 ? "110px" : "200px", maxHeight: window.innerWidth < 950 ? "130px" : "200px"}} isPressable>
                     <Card.Body css={{ p: 0 }}>
                       <Card.Image
                         src={`https://committeeb.com${product.product_pic}`}
@@ -246,13 +246,16 @@ const Home = () => {
                       </Row>
                     </Card.Footer>
                   </Card>
-                </Grid>
-                  : "")}
+                </Grid>)}
               </Grid.Container>
-            </Row>
+            </Grid.Container>
+
+            <br />
+            <br />
             <br />
             <br />
           </Col>
+
         </Container >
         :
 

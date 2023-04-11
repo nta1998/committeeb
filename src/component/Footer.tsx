@@ -41,13 +41,13 @@ const FooterComponent = () => {
         </Grid.Container>
         <br/>        
         <Row style={{display:"flex", justifyContent:"center"}}>
-          <Text h5><img src={icon} height={23} alt="icon" />©2023 Created by natennel Liloz</Text>
+          <Text h5><img src={icon} height={23} alt="icon" />©2023 Created by natanel Liloz</Text>
           </Row>
         <Row style={{display:"flex", justifyContent:"center",gap:"1%"}}>
             <SocialIcon url="https://github.com/nta1998" fgColor="#ffffff" style={{ height: 50, width: 50 }}/>
           <SocialIcon url="https://www.linkedin.com/in/netanelliloz" fgColor="#ffffff"/>
-          <SocialIcon url="https://www.facebook.com/netanel.liluz" fgColor="#ffffff" />
-          <SocialIcon url="https://www.instagram.com/netanelliluz/" fgColor="#ffffff"/>
+          <SocialIcon url="https://www.facebook.com/Natanel.liloz/" fgColor="#ffffff" />
+          <SocialIcon url="https://www.instagram.com/natanelliloz/" fgColor="#ffffff"/>
         </Row>
       </Card.Body>
   </Card>

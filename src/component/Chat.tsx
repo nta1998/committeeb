@@ -28,7 +28,7 @@ const Chat = () => {
     }
     return (
         <Container gap={0} style={{ padding: "3%" }}>
-            <Row gap={1} >
+            <Row gap={0} >
                 <Col style={{ paddingRight: "1%", display: `${window.innerWidth < 950 ? "none" : ""}` }} span={3} >
                     <Card><Text h3 css={{ padding: "2%", textAlign: "center", textGradient: "1005deg, #C9EEFF -80%, #AA77FF 150%" }} b>{user?.building_id?.full_address || ""}</Text></Card>
                     <br />
@@ -63,14 +63,13 @@ const Chat = () => {
                         </Card.Body>
                         <br />
                     </Card>
-                    <div style={{ width: "100%" }}>
                         <Input value={message} onChange={(e) => setmessage(e.target.value)} onKeyDown={(e) => e.key === "Enter" ? sendM() : ""}
                             width='100%'
                             clearable
                             contentRightStyling={false}
                             placeholder="Type your message..."
                             contentRight={
-                                <Button onPress={() => sendM()}>
+                                <Button onPress={() => sendM()} size={"sm"}>
                                     <svg
                                         data-name="Iconly/Curved/Lock"
                                         xmlns="http://www.w3.org/2000/svg"
@@ -83,7 +82,7 @@ const Chat = () => {
                                         </g>
                                     </svg>
                                 </Button>} />
-                    </div>
+
 
 
                 </Col>

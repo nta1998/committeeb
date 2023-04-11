@@ -10,8 +10,8 @@ export class Profile{
         "full_address":string,
         "floors":number,
         "vote_active": boolean,
-        "payment_date":string,
         "committee_name" : string,
+        "payment_date":Date,
         "committee_apartment" : number,
         "committee_phone" : string,
         "committee_monthly" : number
@@ -19,11 +19,11 @@ export class Profile{
     "full_address":"",
     "floors":0,
     "vote_active":false,
-    "payment_date":"",
-        "committee_name" : "",
-        "committee_apartment" : 0,
-        "committee_phone" : "",
-        "committee_monthly" : 0
+    "committee_name" : "",
+    "payment_date":new Date(),
+    "committee_apartment" : 0,
+    "committee_phone" : "",
+    "committee_monthly" : 0
     }
     phone_number:string=""
     is_committee?:boolean

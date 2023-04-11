@@ -49,156 +49,156 @@ const Store = () => {
 
   return (
     <Container gap={0}>
-      <div>
-        <Modal
-          closeButton
-          width='60%'
-          aria-labelledby="modal-title"
-          aria-describedby="modal-description"
-          {...bindings}
-        >
-          <Modal.Header>
-            <Text id="modal-title" b size={20}>
-              {product_selected?.name}
-            </Text>
-          </Modal.Header>
-          <Modal.Body>
-            <Row>
-              <Col>
-                <Image
-                  src={`https://committeeb.com${product_selected?.product_pic}`}
-                  css={{maxWidth:"400px",minWidth:"140px",maxHeight:"300px"}}/>
-                <br />
-                <Text h5 b style={{ marginLeft: "10%" }}>price : {product_selected?.price}₪</Text>
-              </Col>
-              <Col>
-                <Text style={{ padding: "1%" }} size={16}>{product_selected?.Description}</Text>
-              </Col>
-            </Row>
-          </Modal.Body>
-          <Modal.Footer>
-            <Button auto onPress={() => add(product_selected || new Product())}>
-              add to cart
-            </Button>
-          </Modal.Footer>
-        </Modal>
-      </div>
-      <div>
 
-        <Modal
-          closeButton
-          aria-labelledby="modal-title"
-          open={addToStore}
-          onClose={() => setaddToStore(false)}
-        >
-          <Modal.Header>
-            <Text id="modal-title" size={18}>
-              Welcome to
-              <Text b size={18}>
-                Add Product
-              </Text>
-            </Text>
-          </Modal.Header>
-          <Modal.Body>
-            <Input clearable bordered fullWidth size="lg" placeholder="Product name" onChange={(e) => setProduct_name(e.target.value)} />
-            <Dropdown>
-      <Dropdown.Button flat color="secondary" css={{ tt: "capitalize" }}>
-        {Category}
-      </Dropdown.Button>
-      <Dropdown.Menu
-        aria-label="Single selection actions"
-        color="secondary"
-        disallowEmptySelection
-        selectionMode="single"
-        selectedKeys={Category}
-        onSelectionChange={(currentKey) => setCategory(currentKey)}
+      <Modal
+        closeButton
+        width={window.innerWidth < 950 ? "80%" : "60%"}
+        aria-labelledby="modal-title"
+        aria-describedby="modal-description"
+        {...bindings}
       >
-        <Dropdown.Item key="Art">Art</Dropdown.Item>
-        <Dropdown.Item key="Baby">Baby</Dropdown.Item>
-        <Dropdown.Item key="Books">Books</Dropdown.Item>
-        <Dropdown.Item key="Music">Music</Dropdown.Item>
-        <Dropdown.Item key="Cameras & Photo">Cameras & Photo</Dropdown.Item>
-        <Dropdown.Item key="Cell Phones & Accessories">Cell Phones & Accessories</Dropdown.Item>
-        <Dropdown.Item key="Computers/Tablets">Computers/Tablets</Dropdown.Item>
-        <Dropdown.Item key="Pet Supplies">Pet Supplies</Dropdown.Item>
-        <Dropdown.Item key="Toys & Hobbies">Toys & Hobbies</Dropdown.Item>
-        <Dropdown.Item key="Home & Garden">Home & Garden</Dropdown.Item>
-        <Dropdown.Item key="Health & Beauty">Health & Beauty</Dropdown.Item>
-        <Dropdown.Item key="Travel">Travel</Dropdown.Item>
-        <Dropdown.Item key="Other">Other</Dropdown.Item>
-      </Dropdown.Menu>
-    </Dropdown>
-            <Input clearable bordered fullWidth size="lg" placeholder="Description" onChange={(e) => setDescription(e.target.value)} />
-            <Input clearable bordered fullWidth size="lg" placeholder="Price" onChange={(e) => setPrice(+e.target.value)} />
-            <Dragger onChange={(info) => setproductPic(info.file.originFileObj)}>
-              <Row>
-              </Row>
-              <Text>Click or drag file to this area to upload</Text>
-            </Dragger >
-          </Modal.Body>
-          <Modal.Footer>
-            <Button auto onPress={() => addProduct()}>
+        <Modal.Header>
+          <Text id="modal-title" b size={20}>
+            {product_selected?.name}
+          </Text>
+        </Modal.Header>
+        <Modal.Body>
+          <Row>
+            <Col>
+              <Image
+                src={`https://committeeb.com${product_selected?.product_pic}`}
+                css={{ maxWidth: "400px", minWidth: "140px", maxHeight: "300px" }} />
+              <br />
+              <Text h5 b style={{ marginLeft: "10%" }}>price : {product_selected?.price}₪</Text>
+            </Col>
+            <Col>
+              <Text style={{ padding: "1%" }} size={16}>{product_selected?.Description}</Text>
+            </Col>
+          </Row>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button auto onPress={() => add(product_selected || new Product())}>
+            add to cart
+          </Button>
+        </Modal.Footer>
+      </Modal>
+
+
+      <Modal
+        closeButton
+        aria-labelledby="modal-title"
+        open={addToStore}
+        onClose={() => setaddToStore(false)}
+        width={window.innerWidth < 950 ? "80%" : "32%"}
+      >
+        <Modal.Header>
+          <Text id="modal-title" size={18}>
+            Welcome to
+            <Text b size={18}>
               Add Product
-            </Button>
-          </Modal.Footer>
-        </Modal>
-      </div>
-      <Row>
-        <Col style={{width:"250px",paddingLeft:"2%"}}>
-          <br/>
-          <Row><Input size='lg' width={"100%"} placeholder="Serarch" onChange={(e)=> setserarch(e.target.value)} /></Row>
+            </Text>
+          </Text>
+        </Modal.Header>
+        <Modal.Body>
+          <Input clearable bordered fullWidth size="lg" placeholder="Product name" onChange={(e) => setProduct_name(e.target.value)} />
+          <Dropdown>
+            <Dropdown.Button flat color="secondary" css={{ tt: "capitalize" }}>
+              {Category}
+            </Dropdown.Button>
+            <Dropdown.Menu
+              aria-label="Single selection actions"
+              color="secondary"
+              disallowEmptySelection
+              selectionMode="single"
+              selectedKeys={Category}
+              onSelectionChange={(currentKey) => setCategory(currentKey)}
+            >
+              <Dropdown.Item key="Art">Art</Dropdown.Item>
+              <Dropdown.Item key="Baby">Baby</Dropdown.Item>
+              <Dropdown.Item key="Books">Books</Dropdown.Item>
+              <Dropdown.Item key="Music">Music</Dropdown.Item>
+              <Dropdown.Item key="Cameras & Photo">Cameras & Photo</Dropdown.Item>
+              <Dropdown.Item key="Cell Phones & Accessories">Cell Phones & Accessories</Dropdown.Item>
+              <Dropdown.Item key="Computers/Tablets">Computers/Tablets</Dropdown.Item>
+              <Dropdown.Item key="Pet Supplies">Pet Supplies</Dropdown.Item>
+              <Dropdown.Item key="Toys & Hobbies">Toys & Hobbies</Dropdown.Item>
+              <Dropdown.Item key="Home & Garden">Home & Garden</Dropdown.Item>
+              <Dropdown.Item key="Health & Beauty">Health & Beauty</Dropdown.Item>
+              <Dropdown.Item key="Travel">Travel</Dropdown.Item>
+              <Dropdown.Item key="Other">Other</Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
+          <Input clearable bordered fullWidth size="lg" placeholder="Description" onChange={(e) => setDescription(e.target.value)} />
+          <Input clearable bordered fullWidth size="lg" placeholder="Price" onChange={(e) => setPrice(+e.target.value)} />
+          <Dragger onChange={(info) => setproductPic(info.file.originFileObj)}>
+            <Row>
+            </Row>
+            <Text>Click or drag Image to upload</Text>
+          </Dragger >
+        </Modal.Body>
+        <Modal.Footer>
+          <Button auto onPress={() => addProduct()}>
+            Add Product
+          </Button>
+        </Modal.Footer>
+      </Modal>
+
+      <Grid.Container gap={2}>
+        <Grid style={{ paddingLeft: "2%", width:window.innerWidth < 950 ? "100%" : "25%"}}>
+          <br />
+          <Row><Input size='lg' width={"100%"} placeholder="Serarch" onChange={(e) => setserarch(e.target.value)} /></Row>
           <br />
           <Row><Button onPress={() => setaddToStore(true)} color="secondary" auto ghost>Add product</Button></Row>
-          <br/>
+          <br />
           <Collapse title="Category">
-        <Button  light color="secondary"  onClick={()=>setserarchCategory("")}><Text >All</Text></Button>
-        <Button  light color="secondary"  onClick={()=>setserarchCategory("Art")}><Text >Art</Text></Button>
-        <Button  light color="secondary"  onClick={()=>setserarchCategory("Baby")}><Text >Baby</Text></Button>
-        <Button  light color="secondary"  onClick={()=>setserarchCategory("Books")}><Text >Books</Text></Button>
-        <Button  light color="secondary"  onClick={()=>setserarchCategory("Music")}><Text >Music</Text></Button>
-        <Button  light color="secondary"  onClick={()=>setserarchCategory("Cameras & Photo")}><Text >Cameras & Photo</Text></Button>
-        <Button  light color="secondary"  onClick={()=>setserarchCategory("Cell Phones & Accessories")}><Text >Cell Phones & Accessories</Text></Button>
-        <Button  light color="secondary"  onClick={()=>setserarchCategory("Computers/Tablets")}><Text >Computers/Tablets</Text></Button>
-        <Button  light color="secondary"  onClick={()=>setserarchCategory("Pet Supplies")}><Text >Pet Supplies</Text></Button>
-        <Button  light color="secondary"  onClick={()=>setserarchCategory("Toys & Hobbies")}><Text >Toys & Hobbies</Text></Button>
-        <Button  light color="secondary"  onClick={()=>setserarchCategory("Home & Garden")}><Text >Home & Garden</Text></Button>
-        <Button  light color="secondary"  onClick={()=>setserarchCategory("Health & Beauty")}><Text >Health & Beauty</Text></Button>
-        <Button  light color="secondary"  onClick={()=>setserarchCategory("Travel")}><Text >Travel</Text></Button>
-        <Button  light color="secondary"  onClick={()=>setserarchCategory("Other")}><Text >Other</Text></Button>
+            <Row justify='center'><Button light color="secondary" onClick={() => setserarchCategory("")}><Text>All</Text></Button></Row>
+            <Row justify='center'><Button light color="secondary" onClick={() => setserarchCategory("Art")}><Text>Art</Text></Button></Row>
+            <Row justify='center'><Button light color="secondary" onClick={() => setserarchCategory("Baby")}><Text>Baby</Text></Button></Row>
+            <Row justify='center'><Button light color="secondary" onClick={() => setserarchCategory("Books")}><Text>Books</Text></Button></Row>
+            <Row justify='center'><Button light color="secondary" onClick={() => setserarchCategory("Music")}><Text>Music</Text></Button></Row>
+            <Row justify='center'><Button light color="secondary" onClick={() => setserarchCategory("Cameras & Photo")}><Text>Cameras & Photo</Text></Button></Row>
+            <Row justify='center'><Button light color="secondary" onClick={() => setserarchCategory("Cell Phones & Accessories")}><Text>Cell Phones & Accessories</Text></Button></Row>
+            <Row justify='center'><Button light color="secondary" onClick={() => setserarchCategory("Computers/Tablets")}><Text>Computers/Tablets</Text></Button></Row>
+            <Row justify='center'><Button light color="secondary" onClick={() => setserarchCategory("Pet Supplies")}><Text>Pet Supplies</Text></Button></Row>
+            <Row justify='center'><Button light color="secondary" onClick={() => setserarchCategory("Toys & Hobbies")}><Text>Toys & Hobbies</Text></Button></Row>
+            <Row justify='center'><Button light color="secondary" onClick={() => setserarchCategory("Home & Garden")}><Text>Home & Garden</Text></Button></Row>
+            <Row justify='center'><Button light color="secondary" onClick={() => setserarchCategory("Health & Beauty")}><Text>Health & Beauty</Text></Button></Row>
+            <Row justify='center'><Button light color="secondary" onClick={() => setserarchCategory("Travel")}><Text>Travel</Text></Button></Row>
+            <Row justify='center'><Button light color="secondary" onClick={() => setserarchCategory("Other")}><Text>Other</Text></Button></Row>
           </Collapse>
-          <br/>
-        </Col>
+          <br />
+        </Grid>
 
-        <Col css={{paddingLeft:"2%"}}>
-          <Grid.Container gap={2}>
-            {products.filter(product => product.profile_id.building_id === data?.building_id?.id).length  <= 0 ? 
-            <Row style={{justifyContent:"center",padding:"10%"}}><Badge size={"lg"}>No products yet</Badge></Row>
-            :
-            products.filter(product => product.profile_id.building_id === data?.building_id?.id && product.name.includes(serarch) && product.category.includes(serarchCategory)).map((product, index) =>
-             <Grid xs={3}>
-              <Card key={index} onClick={() => modelView(product)} style={{minWidth:"150px", maxWidth: "250px", maxHeight: "200px", margin: "1%" }} isPressable>
-                <Card.Body css={{ p: 0 }}>
-                  <Card.Image
-                    src={`https://committeeb.com${product.product_pic}`}
-                    objectFit="cover"
-                    width="100%"
-                    height={200}
-                    alt=""
-                  />
-                </Card.Body>
-                <Card.Footer css={{ justifyItems: "flex-start" }}>
-                  <Row wrap="wrap" justify="space-between" align="center">
-                    <Text b>{product.name}</Text>
-                    <br />
-                    <Text css={{ color: "$accents7", fontWeight: "$semibold", fontSize: "$sm" }}>
-                      {product.price} ₪
-                    </Text>
-                  </Row>
-                </Card.Footer>
-              </Card></Grid>)}
+        <Grid>
+          <Grid.Container gap={1} style={{maxWidth:"900px"}}>
+            {products.filter(product => product.profile_id.building_id === data?.building_id?.id).length <= 0 ?
+              <Row style={{ justifyContent: "center", padding: "10%" }}><Badge size={"lg"}>No products yet</Badge></Row>
+              :
+              products.filter(product => product.profile_id.building_id === data?.building_id?.id && product.name.includes(serarch) && product.category.includes(serarchCategory)).map((product, index) =>
+                <Grid>
+                  <Card key={index} onClick={() => modelView(product)} style={{ minWidth: window.innerWidth < 950 ? "170px" : "200px", maxWidth: window.innerWidth < 950 ? "170px" : "230px", maxHeight: "200px"}} isPressable>
+                    <Card.Body css={{ p: 0 }}>
+                      <Card.Image
+                        src={`https://committeeb.com${product.product_pic}`}
+                        objectFit="cover"
+                        width="100%"
+                        height={200}
+                        alt=""
+                      />
+                    </Card.Body>
+                    <Card.Footer css={{ justifyItems: "flex-start" }}>
+                      <Row wrap="wrap" justify="space-between" align="center">
+                        <Text b>{product.name}</Text>
+                        <br />
+                        <Text css={{ color: "$accents7", fontWeight: "$semibold", fontSize: "$sm" }}>
+                          {product.price} ₪
+                        </Text>
+                      </Row>
+                    </Card.Footer>
+                  </Card></Grid>)}
           </Grid.Container>
-        </Col>
-      </Row>
+        </Grid>
+      </Grid.Container>
     </Container>
   )
 };

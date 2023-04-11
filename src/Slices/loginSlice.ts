@@ -112,8 +112,8 @@ export const loginSlice = createSlice({
         state.login = true
       })
       .addCase(refreshAsync.rejected, (state, action) => {
-        // if ( window.location.href !== 'http://44.202.160.222/home'){
-        // window.location.href = 'http://44.202.160.222/home';}
+        // if ( window.location.href !== '/'){
+        // window.location.href = '/';}
         
 
      })

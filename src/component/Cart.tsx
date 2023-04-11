@@ -49,7 +49,7 @@ const Cart = () => {
         <Container>
              <Grid.Container gap={3}>
                 <Grid style={{width:window.innerWidth < 950 ? "100%" : "60%"}}> 
-                    <Card variant="bordered">
+                    <Card variant="bordered" style={{maxHeight:window.innerWidth < 950 ? "600px" : "700px"}}>
                         <Card.Body>
                             <Text h2 css={{ textGradient: "85deg, $blue900 -20%, $yellow400 20%" }}>Your Cart</Text>
                             <br />
@@ -59,7 +59,7 @@ const Cart = () => {
                             <br />
                             {!cartItems.length && !payad.length ?  <Row style={{justifyContent:"center"}}><Badge size={"xl"}>No items in the cart yet</Badge></Row> : cartItems?.map((product, index) =>
                              <>
-                             <Card key={index} style={{ minHeight: "120px" }} variant="bordered">
+                             <Card key={index} style={{ minHeight: "130px" }} variant="bordered">
                                 <Grid.Container>
                                     <Grid><Image width="100px" height="120px" src={`https://committeeb.com${product.product_pic}`} /></Grid>
                                     <Grid><Text h3>{product.name}</Text>
@@ -70,7 +70,7 @@ const Cart = () => {
                                 </Grid.Container>
                             </Card>
                                 <br /></>)}
-                                {payad?.map((product, index) => <><Card key={index} style={{ minHeight: "120px" }} variant="bordered">
+                                {payad?.map((product, index) => <><Card key={index} style={{ minHeight: "130px" }} variant="bordered">
                                 <Col style={{ minHeight: "120px",minWidth:"400px" ,padding:"2%"}}>
                                    <Row><Text h3>{product.Title}</Text></Row>
                                    <Row><Text h5 style={{width:"60%"}}>{product.Content}</Text></Row>
@@ -83,8 +83,8 @@ const Cart = () => {
                         </Card.Body>
                     </Card>
                 </Grid>
-                <Grid>
-                    <Card variant="bordered">
+                <Grid style={{width:window.innerWidth < 950 ? "100%" : "40%"}}>
+                    <Card variant="bordered" style={{maxHeight:window.innerWidth < 950 ? "500px" : "600px"}}>
                         <Card.Body>
                             <Text h5>Total Items : {(cartItems?.length||0) + (payad?.length||0)}</Text>
 

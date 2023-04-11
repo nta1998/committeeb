@@ -10,6 +10,7 @@ export interface CounterState {
     data: Profile[];
     post: post[]
     ref: boolean
+    refAdmin:boolean
     profile:Profile
     colorTheme:boolean
     start:boolean
@@ -18,10 +19,11 @@ export interface CounterState {
 const initialState: CounterState = {
     post: [],
     ref: false,
-    data:[],
-    profile:new Profile(),
+    data: [],
+    profile: new Profile(),
     colorTheme: false,
-    start:false
+    start: false,
+    refAdmin: false
 };
 
 
@@ -67,9 +69,11 @@ export const profileSlice = createSlice({
         builder
         .addCase(getAsyncAll.fulfilled, (state, action) => {
             state.data = action.payload
+            state.refAdmin = !state.refAdmin 
 
         })
         .addCase(getAsync.fulfilled, (state, action) => {
+                state.refAdmin = !state.refAdmin 
                 state.profile = action.payload[0]
                 state.start = true
         })
@@ -94,6 +98,7 @@ export const selectGetProfile = (state: RootState) => state.profile.data;
 export const selectGetProfileOne = (state: RootState) => state.profile.profile;
 export const selectpost = (state: RootState) => state.profile.post;
 export const selecflag = (state: RootState) => state.profile.ref;
+export const selecflagAdmin = (state: RootState) => state.profile.refAdmin;
 export const seleccolor = (state: RootState) => state.profile.colorTheme;
 export const selestart = (state: RootState) => state.profile.start;
 

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Table, Row, Col, Tooltip, Text, Card, Button, Modal, Input, Badge, Dropdown, Grid } from "@nextui-org/react";
-import { editPayAsync, selectGetProfile, selectGetProfileOne } from '../Slices/profileSlice';
+import { editPayAsync, selecflagAdmin, selectGetProfile, selectGetProfileOne } from '../Slices/profileSlice';
 import { useAppDispatch, useAppSelector } from '../app/hooks';
 import { addadlAsync, addpayadsAsync, addpoolAsync, selecpool } from '../Slices/adsSlice';
 import { addAsync, delVoteAsync, selecvote, selecVoteflag } from '../Slices/voteSlice';
@@ -19,6 +19,8 @@ const Committee = () => {
   const all_profiles = useAppSelector(selectGetProfile)
   const profile = useAppSelector(selectGetProfileOne)
   const all_vote = useAppSelector(selecvote)
+  const selecflagProfile = useAppSelector(selecflagAdmin)
+
   const dispatch = useAppDispatch()
   const token = localStorage.getItem("access")||""
   const [visiblepayent, setVisiblepayent] = useState(false);
@@ -42,21 +44,22 @@ const Committee = () => {
   const [selected, setSelected] = useState<any>("Select a survey to view")
   useEffect(() => {
   setlink_sing_up(`https://main.d26h4905dv8gvt.amplifyapp.com/singup/31214/${profile.building_id?.id}/312`)
-  setpayment_date(profile.building_id?.payment_date||"")
-  }, [BuildingFlag])
+  setpayment_date((profile.building_id?.payment_date)?.toString()||"")
+  console.log(profile)
+  }, [BuildingFlag,selecflagProfile])
   
   const saveEdit = () => {
     dispatch(editAsync({
       "building": {
-        "id": building.id,
-        "full_address": full_address.length > 2 ? full_address : building.full_address,
-        "floors": building.floors,
-        "vote_active": building.vote_active,
+        "id": profile.building_id?.id,
+        "full_address": full_address.length > 2 ? full_address : profile.building_id?.full_address,
+        "floors": profile.building_id?.floors,
+        "vote_active": profile.building_id?.vote_active,
         "payment_date":payment_date,
-        "committee_name": building.committee_name,
-        "committee_apartment": building.committee_apartment,
-        "committee_phone": committee_phone.length > 2 ? committee_phone : building.committee_phone,
-        "committee_monthly": committee_monthly > 2 ? committee_monthly : building.committee_monthly
+        "committee_name": profile.building_id?.committee_name,
+        "committee_apartment": profile.building_id?.committee_apartment,
+        "committee_phone": committee_phone.length > 2 ? committee_phone : profile.building_id?.committee_phone,
+        "committee_monthly": committee_monthly > 2 ? committee_monthly : profile.building_id?.committee_monthly
       }, token
     }))
     setedit(false)
@@ -213,7 +216,7 @@ const Committee = () => {
           <br/>
           <br/>
           <Row>
-            <Input onChange={(e) => setpayment_date(e.target.value)} width={window.innerWidth < 950 ? "50%" : "30%"} disabled={edit ? false : true} type={"date"} label="payment date" value={payment_date} ></Input>
+            <Input onChange={(e) => setpayment_date(e.target.value)} width={window.innerWidth < 950 ? "50%" : "30%"} disabled={edit ? false : true} type="date" label="payment date" value={payment_date}></Input>
           </Row>
           <br />
           <br />
@@ -268,6 +271,7 @@ const Committee = () => {
       </Card>
       <br />
       <br />
+      <Row style={{padding:"4%"}}>
       <Table>
         <Table.Header>
           <Table.Column>user</Table.Column>
@@ -307,6 +311,7 @@ const Committee = () => {
           </Table.Row>)}
         </Table.Body>
       </Table>
+      </Row>
     </>
   );
 }
