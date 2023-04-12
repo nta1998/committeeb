@@ -23,13 +23,6 @@ const ProfileC = () => {
   const [bio, setbio] = useState("")
   const [pic, setpic] = useState<any>()
 
-  useEffect(() => {
-    dispatch(getAsync(token))
-  }, [is_login])
-
-  useEffect(() => {
-    dispatch(getAsync(token))
-  }, [flag])
 
   const edit_profile = (id: number, pro: Profile) => {
     const formData = new FormData();

@@ -7,14 +7,17 @@ import { SocialIcon } from 'react-social-icons';
 import { useAppSelector } from "../app/hooks";
 import { selectGetProfileOne } from "../Slices/profileSlice";
 import { selectBuilding } from "../Slices/buildingSlice";
+import { selectlog } from "../Slices/loginSlice";
 const FooterComponent = () => {
   const profile = useAppSelector(selectGetProfileOne)
+  const is_login = useAppSelector(selectlog)
   const building = useAppSelector(selectBuilding)
+  
   return (
     <Container>
       <Card>
         <Card.Body>
-        <Grid.Container gap={2} justify="center">
+        {is_login ?<Grid.Container gap={2} justify="center">
         <Row style={{justifyContent:"center"}}>
         <Grid>
           <Col style={{ padding: '1%', width: "10%" }}>
@@ -38,7 +41,7 @@ const FooterComponent = () => {
           </Col>
           </Grid>
         </Row>
-        </Grid.Container>
+        </Grid.Container>:""}
         <br/>        
         <Row style={{display:"flex", justifyContent:"center"}}>
           <Text h5><img src={icon} height={23} alt="icon" />©2023 Created by natanel Liloz</Text>
@@ -51,6 +54,7 @@ const FooterComponent = () => {
         </Row>
       </Card.Body>
   </Card>
+  <br/>
   <br/>
     </Container >
   )

@@ -3,7 +3,7 @@ import { login ,refreshp,singup, singupbuilding} from '../Api/loginAPI';
 import { User } from '../model/user';
 import { RootState } from '../app/store';
 import { toast } from 'react-toastify';
-
+import confetti from 'canvas-confetti';
 
 
 export interface CounterState {
@@ -78,7 +78,11 @@ export const loginSlice = createSlice({
   extraReducers: (builder) => {
     builder
     .addCase(singuphAsync.fulfilled, (state, action) => {
-        window.location.href = "/"
+        confetti({particleCount: 1000, spread: 360, ticks: 100, zIndex: 100 })
+        setTimeout(() => {
+          window.location.href = "/"
+        }, 2000);
+
     })
     .addCase(singuphAsync.rejected, (state, action) => {
       toast.error("Error Occurred. Please try again later",{position: "top-center"})

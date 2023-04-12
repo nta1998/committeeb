@@ -12,12 +12,13 @@ export const getbuilding=(token:string,id:number)=>{
   );
 }
 export const voteActiv=(bilding:Building,token:string)=>{
-  console.log(bilding.id)
+  console.log(bilding)
   return new Promise<{ data: Building }>((resolve,reject) =>
     axios.put(MY_server+"building/"+bilding.id,{
       full_address:bilding.full_address,
       floors:bilding.floors,
       vote_active:!bilding.vote_active,
+      payment_date:bilding.payment_date,
       committee_name:bilding.committee_name,
       committee_apartment:bilding.committee_apartment,
       committee_phone:bilding.committee_phone,

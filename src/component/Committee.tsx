@@ -165,7 +165,10 @@ const Committee = () => {
         </Modal.Footer>
       </Modal>
 
-      <Row style={{width: "100%" ,padding:"5%",justifyContent:"center"}} >
+      <Row style={{width: "100%" ,padding:"1%",justifyContent:"center"}} >
+        <Text size={30}>👇</Text><Text b size={25} css={{ textGradient: "45deg, $blue600 -20%, $pink600 50%" }}>Send to the members of the building</Text><Text size={30}>👇</Text>
+        </Row>
+        <Row style={{width: "100%" ,padding:"1%",justifyContent:"center"}}>
         <Card css={{ mw: "450px" }}>
           <Card.Body>
             <WhatsappShareButton
@@ -271,8 +274,8 @@ const Committee = () => {
       </Card>
       <br />
       <br />
-      <Row style={{padding:"4%"}}>
-      <Table>
+<Col>
+      <Table css={{padding:"0% 7% 0% 7%"}}>
         <Table.Header>
           <Table.Column>user</Table.Column>
           <Table.Column>full_name</Table.Column>
@@ -311,7 +314,11 @@ const Committee = () => {
           </Table.Row>)}
         </Table.Body>
       </Table>
-      </Row>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+</Col>
     </>
   );
 }

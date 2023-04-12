@@ -1,13 +1,9 @@
 import { Container, Row, Col, Card, Text, Button, Grid, Badge, Modal, Input } from '@nextui-org/react';
-import homeimg from '../static/img/tokyo-cityscape-digital-art.jpg'
 import { Link } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../app/hooks';
 import { selectlog, singupbuildingAsync } from '../Slices/loginSlice';
-import Ads from './Ads';
-import Store from './StoreC';
-import React, { useEffect, useState } from 'react';
-import { getAsync, selectGetProfileOne } from '../Slices/profileSlice';
-import { getAsyncbuilding } from '../Slices/buildingSlice';
+import React, {  useState } from 'react';
+
 import { addVoteAsync, selecads, selecpayads, selecpool } from '../Slices/adsSlice';
 import { addPaymentAdToCart, addToCart, selecproduct } from '../Slices/productSlice';
 import Bulletin_Board from "../static/img/Bulletin_Board.jpg"
@@ -22,8 +18,11 @@ import { AiOutlinePhone } from 'react-icons/ai';
 import { AiOutlineUser } from 'react-icons/ai';
 import { RiLockPasswordFill } from 'react-icons/ri';
 import { MdEmail } from 'react-icons/md';
-import { ToastContainer } from 'react-toastify';
+import { TbBuildingSkyscraper } from 'react-icons/tb';
 import confetti from 'canvas-confetti';
+import { selectGetProfileOne } from '../Slices/profileSlice';
+import { GiLevelEndFlag, GiTakeMyMoney } from 'react-icons/gi';
+import { BsCalendar2Date } from 'react-icons/bs';
 
 const Home = () => {
   const is_login = useAppSelector(selectlog)
@@ -79,16 +78,16 @@ const Home = () => {
         </Modal.Header>
         <Modal.Body>
           <Input onChange={(e) => setusername(e.target.value)} clearable fullWidth bordered placeholder='Username' contentLeft={<AiOutlineUser />} />
-          <Input onChange={(e) => setemail(e.target.value)} clearable fullWidth bordered placeholder='Email' contentLeft={<MdEmail />} />
           <Input.Password onChange={(e) => setpassword(e.target.value)} clearable fullWidth bordered placeholder='Password' contentLeft={<RiLockPasswordFill />} />
+          <Input onChange={(e) => setemail(e.target.value)} clearable fullWidth bordered placeholder='Email' contentLeft={<MdEmail />} />
           <Input onChange={(e) => setfull_name(e.target.value)} clearable fullWidth bordered placeholder='full_name' contentLeft={<SiSuperuser />} />
-          <Input onChange={(e) => setapartment(e.target.value)} clearable fullWidth bordered placeholder='apartment' contentLeft={<MdApartment />} />
+          <Input onChange={(e) => setfull_address(e.target.value)} clearable fullWidth bordered placeholder='full_address' contentLeft={<TbBuildingSkyscraper/>} />
+          <Input onChange={(e) => setapartment(e.target.value)} clearable fullWidth bordered placeholder='apartment' type={"number"} contentLeft={<MdApartment />} />
+          <Input onChange={(e) => setfloors(+e.target.value)} clearable fullWidth bordered placeholder='floors' type={"number"} contentLeft={<GiLevelEndFlag />} />
           <Input onChange={(e) => setphone_number(e.target.value)} clearable fullWidth bordered placeholder='phone_number' contentLeft={<AiOutlinePhone />} />
           <Input onChange={(e) => setbio(e.target.value)} clearable fullWidth bordered placeholder='bio' contentLeft={<BiOutline />} />
-          <Input onChange={(e) => setfull_address(e.target.value)} clearable fullWidth bordered placeholder='full_address' contentLeft={<MdEmail />} />
-          <Input onChange={(e) => setfloors(+e.target.value)} clearable fullWidth bordered placeholder='floors' contentLeft={<MdEmail />} />
-          <Input onChange={(e) => setpayment_date(e.target.value)} clearable fullWidth bordered type={"date"} placeholder='Payment date' contentLeft={<MdEmail />} />
-          <Input onChange={(e) => setcommittee_monthly(+e.target.value)} clearable fullWidth bordered placeholder='committee_monthly' contentLeft={<MdEmail />} />
+          <Input onChange={(e) => setpayment_date(e.target.value)} fullWidth bordered type={"date"} placeholder='Payment date' contentLeft={<BsCalendar2Date />} />
+          <Input onChange={(e) => setcommittee_monthly(+e.target.value)} clearable fullWidth bordered placeholder='committee_monthly' type={"number"}contentLeft={<GiTakeMyMoney />} />
         </Modal.Body>
         <Modal.Footer>
           <Button auto onPress={() => setVisible(false)} onClick={() => handleConfetti()}>
@@ -101,12 +100,11 @@ const Home = () => {
         <Container>
           <Row>
             <Col>
-              <Text h1 css={{ textGradient: "45deg, $blue600 -20%, $pink600 50%" }} weight="bold">Chat</Text>
               <Card css={{ w: "100%", h: "400px" }} variant="bordered">
                 <Card.Header css={{ position: "absolute", zIndex: 1, top: 5 }}>
                   <Col>
-                    <Text size={12} weight="bold" transform="uppercase" color="#9E9E9E">Your day your way</Text>
-                    <Text h3 color="white">Go to Chat and communicate with the whole building</Text>
+                    <Text size={12} b transform="uppercase" color="#9E9E9E">Your day your way</Text>
+                    <Text h3 color="#9E9E9E" b>Go to Chat and communicate with the whole building</Text>
                   </Col>
                 </Card.Header>
                 <Card.Body css={{ p: 0 }}>
@@ -117,10 +115,11 @@ const Home = () => {
                     <Col>
                       <Row>
                         <Col>
-                          <Text color="#d1d1d1" size={18}>
+                          <Text color="#d1d1d1" size={20} b>
                             Chat
                           </Text>
-                          <Text color="#d1d1d1" size={14}>
+                          <br/>
+                          <Text color="#d1d1d1" size={15}b>
                             The whole building is in the palm of your hand
                           </Text>
                         </Col>
@@ -130,7 +129,7 @@ const Home = () => {
                       <Row justify="flex-end">
                         <Button type='button' flat auto rounded css={{ color: "#94f9f0", bg: "#94f9f026" }}>
                           <Link to="/Chat" style={{ color: "inherit" }}>
-                            <Text css={{ color: "inherit" }} size={12} weight="bold">
+                            <Text css={{ color: "inherit" }} size={17} weight="bold">
                               Go Chat
                             </Text>
                           </Link>
@@ -146,7 +145,7 @@ const Home = () => {
           <Col>
             <Grid.Container justify="center" gap={5}>
               <Row style={{ padding: "1%" }}>
-                <Link to={"/Ads"}><Text b size={50} css={{ textGradient: "45deg, $blue600 -20%, $pink600 50%" }}>Ads</Text></Link>
+                <Link to={"/Ads"}><Text b size={50} css={{ textGradient: "45deg, $blue600 -20%, $pink600 50%" }} weight="bold">Bulletin Board</Text></Link>
               </Row>
 
               <Grid>
@@ -188,7 +187,6 @@ const Home = () => {
                           <Button flat size="sm" color="error" style={{ marginLeft: "5%" }} onClick={() => dispatch(addVoteAsync({ pool, action: "no", token }))}>👎</Button>
                         </Row>
                       </Card.Footer>
-
                     </Card>
                   }
                 </Row>
@@ -221,9 +219,9 @@ const Home = () => {
               </Grid>
 
               <Row>
-                <Link to={"/Store"}><Text size={50} b css={{ textGradient: "45deg, $blue600 -20%, $pink600 50%", padding: "1%" }} weight="bold">Store</Text></Link>
+                <Link to={"/Store"}><Text size={50} b css={{ textGradient: "45deg, $blue600 -20%, $pink600 50%"}} weight="bold">Building store</Text></Link>
               </Row>
-              {!products.length ? <Card css={{ maxWidth: "330px", minWidth: "330px", minHeight: "150px", justifyContent: "center" }}><Badge css={{ marginLeft: "45%" }} size={"lg"}>No products yet</Badge></Card> : ""}
+              {!products.length ? <Card css={{ maxWidth: "330px", minWidth: "330px", minHeight: "150px", justifyContent: "center" }}><Badge css={{ marginLeft: "29%" }} size={"lg"}>No products yet</Badge></Card> : ""}
               <Grid.Container gap={1} justify="center">
                 {products.filter(product => product.profile_id.building_id === profile?.building_id?.id).map((product, index) => <Grid>
                   <Card onClick={() => dispatch(addToCart(product))} style={{ minWidth: window.innerWidth < 950 ? "130px" : "170px", maxWidth: window.innerWidth < 950 ? "130px" : "170px" ,minHeight: window.innerWidth < 950 ? "110px" : "200px", maxHeight: window.innerWidth < 950 ? "130px" : "200px"}} isPressable>

@@ -175,7 +175,7 @@ if (userConfirmed) {
         <br />
         <br />
         <br />
-        <FooterComponent />
+       <FooterComponent />
       </NextUIProvider>
     </NextThemesProvider>
 

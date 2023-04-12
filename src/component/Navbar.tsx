@@ -48,10 +48,10 @@ const NavbarC = () => {
   }
 
   return (
-    <Navbar isBordered variant="sticky">
+    <Navbar isBordered variant="static">
       <Navbar.Toggle showIn="sm" aria-label="toggle navigation"/>
       <Navbar.Brand
-        css={{"@xs": {w: "20%"}}}>
+        css={{"@xs": {w: "15%"}}}>
         <Link to="/home" style={{display:"flex"}}>
         <img src={icon} alt="icon" /><Text css={{ textGradient: "1005deg, #C9EEFF -80%, #AA77FF 150%" }} weight="bold" >
           The digital committee
@@ -107,15 +107,16 @@ const NavbarC = () => {
                 <Link to="/profile">
                   <Text h6 b css={{ d: "flex" }}>
                     Signed in as
+                    
                   </Text>
                   <Text h4 b css={{ d: "flex" }}>
-                    {profile?.full_name}
                   </Text>
                 </Link>
               </Dropdown.Item>
               <Dropdown.Item key="settings" withDivider className="nav-link active">
                 <Link to="/profile">
                   <Text>
+                    {profile?.profile_pic}
                     My Profile
                   </Text>
                 </Link>

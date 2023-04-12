@@ -8,17 +8,17 @@ import { SiSuperuser } from 'react-icons/si';
 import { BiOutline } from 'react-icons/bi';
 import { MdApartment } from 'react-icons/md';
 import { AiOutlinePhone } from 'react-icons/ai';
-import { BsImage } from 'react-icons/bs';
 import { useParams } from 'react-router-dom';
 import { useAppDispatch } from '../app/hooks';
 import { singuphAsync } from '../Slices/loginSlice';
 import { ToastContainer } from 'react-toastify';
+import {NextUIProvider } from "@nextui-org/react"
+import { ThemeProvider as NextThemesProvider } from 'next-themes';
 
 const Singup = () => {
   const [username, setusername] = useState("")
   const [email, setemail] = useState("")
   const [password, setpassword] = useState("")
-  const [pic, setpic] = useState("")
   const [full_name, setfull_name] = useState("")
   const [bio, setbio] = useState("")
   const [apartment, setapartment] = useState("")
@@ -27,20 +27,22 @@ const Singup = () => {
 
   const { id } = useParams()
   return (
+    <NextThemesProvider>
+    <NextUIProvider>
     <Container>
       <ToastContainer />
       <br/>
       <br/>
       <Row> 
-        <Grid.Container gap={3}>
+        <Grid.Container gap={10} justify="center">
         <Grid>
-          <Col style={{ padding: "2%" }}>  <Text b size={50} css={{ textGradient: "45deg, $yellow600 -20%, $red600 100%", width: "1%" }} weight="bold">The digital committee</Text>
+          <Col style={{ padding: "2%" }}>  <Text b size={50} css={{ textGradient: "45deg, $yellow600 -20%, $red600 100%" }} weight="bold">The digital committee</Text>
             <br/>
             <br/>
             <br/>
             <Row>
               <Player src="https://cdn.lordicon.com/vtmsmyks.json" background="transparent" speed={1} style={{ position: "relative", width: "50px", height: "40px" }} autoplay loop />
-              <Text size={20} css={{ textGradient: "45deg, $blue500 -30%, $pink500 30%" }}>Are you tired of the house committee chasing you </Text></Row>
+              <Text size={20} css={{textGradient: "45deg, $blue500 -30%, $pink500 30%" }}>Are you tired of the house committee chasing you </Text></Row>
             <Row>
               <Player src="https://cdn.lordicon.com/fihkmkwt.json" background="transparent" speed={1} style={{ position: "relative", margin: "5% 0%", width: "50px", height: "40px" }} autoplay loop />
               <Text size={20} css={{ textGradient: "45deg, $blue500 -40%, $pink500 40%" }}>all in one place? </Text>
@@ -85,14 +87,15 @@ const Singup = () => {
               <Input onChange={(e) => setphone_number(e.target.value)} clearable fullWidth bordered placeholder='phone_number' contentLeft={<AiOutlinePhone />} />
               <br />
               <br />
-              <Button color="warning" auto onClick={() => dispatch(singuphAsync({ "singupData": { username, email, password }, "profile": { full_name, bio, apartment, phone_number, pic, "building_id": id } }))}>singup</Button>
+              <Button color="warning" auto onClick={() => dispatch(singuphAsync({ "singupData": { username, email, password }, "profile": { full_name, bio, apartment, phone_number, "building_id": id } }))}>singup</Button>
             </Card.Body>
           </Card>
         </Grid>
       </Grid.Container>
       </Row>
-
     </Container>
+    </NextUIProvider>
+    </NextThemesProvider>
   )
 }
 
