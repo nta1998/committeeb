@@ -66,7 +66,7 @@ const Store = () => {
           <Row>
             <Col>
               <Image
-                src={`https://committeeb.com${product_selected?.product_pic}`}
+                src={`https://committeeb.com/static${product_selected?.product_pic}`}
                 css={{ maxWidth: "400px", minWidth: "140px", maxHeight: "300px" }} />
               <br />
               <Text h5 b style={{ marginLeft: "10%" }}>price : {product_selected?.price}₪</Text>
@@ -129,7 +129,7 @@ const Store = () => {
             </Dropdown.Menu>
           </Dropdown>
           <Input clearable bordered fullWidth size="lg" placeholder="Description" onChange={(e) => setDescription(e.target.value)} />
-          <Input clearable bordered fullWidth size="lg" placeholder="Price" onChange={(e) => setPrice(+e.target.value)} />
+          <Input bordered fullWidth size="lg" placeholder="Price"  type={"number"} onChange={(e) => setPrice(+e.target.value)} />
           <Dragger onChange={(info) => setproductPic(info.file.originFileObj)}>
             <Row>
             </Row>
@@ -175,11 +175,11 @@ const Store = () => {
               <Row style={{ justifyContent: "center", padding: "10%" }}><Badge size={"lg"}>No products yet</Badge></Row>
               :
               products.filter(product => product.profile_id.building_id === data?.building_id?.id && product.name.includes(serarch) && product.category.includes(serarchCategory)).map((product, index) =>
-                <Grid>
+                <Grid key={index}>
                   <Card key={index} onClick={() => modelView(product)} style={{ minWidth: window.innerWidth < 950 ? "170px" : "200px", maxWidth: window.innerWidth < 950 ? "170px" : "230px", maxHeight: "200px"}} isPressable>
                     <Card.Body css={{ p: 0 }}>
                       <Card.Image
-                        src={`https://committeeb.com${product.product_pic}`}
+                        src={`https://committeeb.com/static${product.product_pic}`}
                         objectFit="cover"
                         width="100%"
                         height={200}

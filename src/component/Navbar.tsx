@@ -96,7 +96,7 @@ const NavbarC = () => {
                   as="button"
                   color="secondary"
                   size="md"
-                  src={"https://committeeb.com"+profile?.profile_pic}/>
+                  src={"https://committeeb.com/static"+profile?.profile_pic}/>
               </Dropdown.Trigger>
             </Navbar.Item>
             <Dropdown.Menu
@@ -107,16 +107,16 @@ const NavbarC = () => {
                 <Link to="/profile">
                   <Text h6 b css={{ d: "flex" }}>
                     Signed in as
-                    
+                  
                   </Text>
-                  <Text h4 b css={{ d: "flex" }}>
+                  <Text h4 b css={{ d: "flex" }}>  
+                  {profile.full_name}
                   </Text>
                 </Link>
               </Dropdown.Item>
               <Dropdown.Item key="settings" withDivider className="nav-link active">
                 <Link to="/profile">
                   <Text>
-                    {profile?.profile_pic}
                     My Profile
                   </Text>
                 </Link>

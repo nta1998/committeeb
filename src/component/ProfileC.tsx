@@ -33,7 +33,7 @@ const ProfileC = () => {
     formData.append('phone_number', Phone_number.length < 2 ? pro.phone_number : Phone_number);
     formData.append("bio", bio.length < 2 ? pro.bio : bio);
     formData.append("is_committee", (pro.is_committee||false).toString())
-    formData.append('profile_pic', pic);
+    formData.append('profile_pic', pic? pic :pro.profile_pic);
     setedit(!edit)
     dispatch(editAsync({ formData, token, id }))
   }
@@ -43,7 +43,7 @@ const ProfileC = () => {
       <Col>{!edit ?
         <Col>
           <Col>
-            <User src={'https://committeeb.com' + data.profile_pic} name={data.full_name} size="xl" />
+            <User src={'https://committeeb.com/static' + data.profile_pic} name={data.full_name} size="xl" />
             <br />
             <Col style={{ padding: '1% 25%' }}>
               <Text h4 size={20} css={{ textGradient: "45deg, $blue600 -20%, $pink600 50%", }} weight="bold">Address</Text>

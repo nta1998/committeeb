@@ -23,15 +23,16 @@ import confetti from 'canvas-confetti';
 import { selectGetProfileOne } from '../Slices/profileSlice';
 import { GiLevelEndFlag, GiTakeMyMoney } from 'react-icons/gi';
 import { BsCalendar2Date } from 'react-icons/bs';
+import { Payads, Pool } from '../model/ads';
 
 const Home = () => {
   const is_login = useAppSelector(selectlog)
   const token = localStorage.getItem("access") || ""
   const dispatch = useAppDispatch();
   const profile = useAppSelector(selectGetProfileOne)
-  const ads = useAppSelector(selecads).filter(ad => ad.building_id === profile?.building_id?.id)[0]
-  const pool = useAppSelector(selecpool).filter(pool => pool.building_id === profile?.building_id?.id)[0]
-  const payads = useAppSelector(selecpayads).filter(payads => payads.building_id === profile?.building_id?.id)[0]
+  const ads = useAppSelector(selecads).filter(ad => ad.building_id === profile?.building_id?.id).pop()
+  const pool = useAppSelector(selecpool).filter(pool => pool.building_id === profile?.building_id?.id).pop()
+  const payads = useAppSelector(selecpayads).filter(payads => payads.building_id === profile?.building_id?.id).pop()
   const products = useAppSelector(selecproduct);
 
   const [visible, setVisible] = React.useState(false);
@@ -103,8 +104,8 @@ const Home = () => {
               <Card css={{ w: "100%", h: "400px" }} variant="bordered">
                 <Card.Header css={{ position: "absolute", zIndex: 1, top: 5 }}>
                   <Col>
-                    <Text size={12} b transform="uppercase" color="#9E9E9E">Your day your way</Text>
-                    <Text h3 color="#9E9E9E" b>Go to Chat and communicate with the whole building</Text>
+                    <Text size={12} b transform="uppercase" color="#9E9E9E">Your day your way</Text><br/>
+                    <Text size={24} color="black" b>Go to Chat and communicate with the whole building</Text>
                   </Col>
                 </Card.Header>
                 <Card.Body css={{ p: 0 }}>
