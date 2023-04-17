@@ -3,7 +3,7 @@ import { Table, Row, Col, Tooltip, Text, Card, Button, Modal, Input, Badge, Drop
 import { editPayAsync, selecflagAdmin, selectGetProfile, selectGetProfileOne } from '../Slices/profileSlice';
 import { useAppDispatch, useAppSelector } from '../app/hooks';
 import { addadlAsync, addpayadsAsync, addpoolAsync, selecpool } from '../Slices/adsSlice';
-import { addAsync, delVoteAsync, selecvote, selecVoteflag } from '../Slices/voteSlice';
+import { addAsync, delVoteAsync, selecvote, selecVoteflag, winVoteAsync } from '../Slices/voteSlice';
 import { editAsync, selectBuilding, selectBuildingFlag, voteActivAsync } from '../Slices/buildingSlice';
 import { Player } from '@lottiefiles/react-lottie-player';
 import { GiVote } from 'react-icons/gi';
@@ -107,6 +107,21 @@ const Committee = () => {
     setChartOptions(options);
   }, [pool, selected])
 
+  const vote_win=()=>{
+    let vote_num = 0
+    let win:any = null
+    dispatch(voteActivAsync({ "building": profile.building_id, token }))
+    for(let item of all_vote){
+      if (item.vote > vote_num){
+        win = item
+        vote_num = item.vote
+      }
+    }
+    let winer = all_profiles.find(pro => pro.id === win.id)
+    console.log(winer)
+    dispatch(winVoteAsync({win,profile,token}))
+  }
+
   return (
     <>
       <Modal
@@ -182,7 +197,7 @@ const Committee = () => {
       <Grid.Container gap={3} justify="center">
         <Grid>
         <Tooltip content={`${building?.vote_active ? "Close" : "Open"} vote To The Next Commiet`}>
-          <Button bordered color="warning" auto onClick={() => dispatch(voteActivAsync({ "building": profile.building_id, token }))}>{building?.vote_active ? "Close" : "Open"} Vote</Button>
+          <Button bordered color="warning" auto onClick={() => vote_win()}>{building?.vote_active ? "Close" : "Open"} Vote</Button>
         </Tooltip>
         </Grid>
         <Grid>
@@ -277,19 +292,19 @@ const Committee = () => {
 <Col>
       <Table css={{padding:"0% 7% 0% 7%"}}>
         <Table.Header>
-          <Table.Column>user</Table.Column>
-          <Table.Column>full_name</Table.Column>
+          <Table.Column>full name</Table.Column>
+          <Table.Column>email</Table.Column>
+          <Table.Column>phone number</Table.Column>
           <Table.Column>apartment</Table.Column>
-          <Table.Column>phone_number</Table.Column>
           <Table.Column>payment</Table.Column>
           <Table.Column>action</Table.Column>
         </Table.Header>
         <Table.Body>
           {all_profiles.filter(profiles => profiles.building_id?.id === profile.building_id?.id).map((profile, index) => <Table.Row key={index}>
-            <Table.Cell>{profile.user}</Table.Cell>
             <Table.Cell>{profile.full_name}</Table.Cell>
-            <Table.Cell>{profile.apartment}</Table.Cell>
+            <Table.Cell>{profile.user}</Table.Cell>
             <Table.Cell>{profile.phone_number}</Table.Cell>
+            <Table.Cell>{profile.apartment}</Table.Cell>
             <Table.Cell>{profile.monthly_payment ? <FcApproval /> : <FcHighPriority />}</Table.Cell>
             <Table.Cell>
               <Row>

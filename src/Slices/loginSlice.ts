@@ -65,6 +65,8 @@ export const loginSlice = createSlice({
       state.acsses = ""
       localStorage.setItem("refresh",state.refresh) 
       localStorage.setItem("access",state.acsses)
+      sessionStorage.setItem("refresh",state.refresh) 
+      sessionStorage.setItem("access",state.acsses)
       toast.warning("Hope to see you again soon",{autoClose: 1000}); 
     } , 
     remember: (state) => {
@@ -92,8 +94,11 @@ export const loginSlice = createSlice({
         state.refresh = action.payload.refresh
         state.login = true
         localStorage.setItem("access",action.payload.access)
+        sessionStorage.setItem("access",action.payload.access)
         if(state.to_remember){
           localStorage.setItem("refresh",action.payload.refresh) 
+          sessionStorage.setItem("refresh",action.payload.refresh) 
+
          }
          toast.success("Hi, welcome back",{position: "top-center"});
          
@@ -111,6 +116,8 @@ export const loginSlice = createSlice({
       .addCase(refreshAsync.fulfilled, (state, action) => {
         localStorage.setItem("refresh",action.payload.refresh) 
         localStorage.setItem("access",action.payload.access)
+        sessionStorage.setItem("refresh",action.payload.refresh) 
+        sessionStorage.setItem("access",action.payload.access)
         state.acsses = action.payload.access
         state.refresh = action.payload.refresh
         state.login = true

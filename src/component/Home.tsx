@@ -52,7 +52,7 @@ const Home = () => {
   const [phone_number, setphone_number] = useState("")
   const [full_address, setfull_address] = useState("")
   const [floors, setfloors] = useState(0)
-  const [payment_date, setpayment_date] = useState("")
+  const [payment_date, setpayment_date] = useState("2000-10-10")
   const [committee_monthly, setcommittee_monthly] = useState(0)
 
   const handleConfetti = () => {
@@ -66,29 +66,37 @@ const Home = () => {
         blur
         aria-labelledby="modal-title"
         open={visible}
-        width={window.innerWidth < 950 ? "90%" : "30%"}
+        width={window.innerWidth < 950 ? "90%" : "45%"}
         onClose={closeHandler}
       >
         <Modal.Header>
           <Text id="modal-title" size={18}>
-            Sing Up To
-            <Text b size={18}>
+            Sing Up
+            <Text b size={18}><br/>
               The digital committee
             </Text>
           </Text>
         </Modal.Header>
         <Modal.Body>
-          <Input onChange={(e) => setusername(e.target.value)} clearable fullWidth bordered placeholder='Username' contentLeft={<AiOutlineUser />} />
-          <Input.Password onChange={(e) => setpassword(e.target.value)} clearable fullWidth bordered placeholder='Password' contentLeft={<RiLockPasswordFill />} />
-          <Input onChange={(e) => setemail(e.target.value)} clearable fullWidth bordered placeholder='Email' contentLeft={<MdEmail />} />
-          <Input onChange={(e) => setfull_name(e.target.value)} clearable fullWidth bordered placeholder='full_name' contentLeft={<SiSuperuser />} />
-          <Input onChange={(e) => setfull_address(e.target.value)} clearable fullWidth bordered placeholder='full_address' contentLeft={<TbBuildingSkyscraper/>} />
-          <Input onChange={(e) => setapartment(e.target.value)} clearable fullWidth bordered placeholder='apartment' type={"number"} contentLeft={<MdApartment />} />
-          <Input onChange={(e) => setfloors(+e.target.value)} clearable fullWidth bordered placeholder='floors' type={"number"} contentLeft={<GiLevelEndFlag />} />
-          <Input onChange={(e) => setphone_number(e.target.value)} clearable fullWidth bordered placeholder='phone_number' contentLeft={<AiOutlinePhone />} />
-          <Input onChange={(e) => setbio(e.target.value)} clearable fullWidth bordered placeholder='bio' contentLeft={<BiOutline />} />
-          <Input onChange={(e) => setpayment_date(e.target.value)} fullWidth bordered type={"date"} placeholder='Payment date' contentLeft={<BsCalendar2Date />} />
-          <Input onChange={(e) => setcommittee_monthly(+e.target.value)} clearable fullWidth bordered placeholder='committee_monthly' type={"number"}contentLeft={<GiTakeMyMoney />} />
+          <br/>
+          <Grid.Container gap={3}>
+          <Grid>
+            <Col><Input onChange={(e) => setusername(e.target.value)} fullWidth clearable bordered labelPlaceholder='Username' contentLeft={<AiOutlineUser />}/><br/><br/><br/>
+          <Input.Password onChange={(e) => setpassword(e.target.value)} fullWidth clearable  bordered labelPlaceholder='Password' contentLeft={<RiLockPasswordFill />} /><br/><br/><br/>
+          <Input onChange={(e) => setemail(e.target.value)} clearable fullWidth bordered labelPlaceholder='Email' contentLeft={<MdEmail />} /> <br/><br/><br/>
+          <Input onChange={(e) => setfull_name(e.target.value)} clearable fullWidth bordered labelPlaceholder='full name' contentLeft={<SiSuperuser />} /> <br/><br/><br/>
+          <Input onChange={(e) => setphone_number(e.target.value)} clearable fullWidth bordered labelPlaceholder='phone number' contentLeft={<AiOutlinePhone />} /> <br/><br/><br/>
+          <Input onChange={(e) => setbio(e.target.value)} clearable fullWidth bordered labelPlaceholder='bio' contentLeft={<BiOutline />} />
+         </Col>
+           </Grid>
+          <Grid>
+          <Input onChange={(e) => setfull_address(e.target.value)} clearable fullWidth bordered labelPlaceholder='full address' contentLeft={<TbBuildingSkyscraper/>} /> <br/><br/><br/>
+          <Input onChange={(e) => setapartment(e.target.value)} clearable fullWidth bordered labelPlaceholder='apartment' type={"number"} contentLeft={<MdApartment />} /> <br/><br/><br/>
+          <Input onChange={(e) => setfloors(+e.target.value)} clearable fullWidth bordered labelPlaceholder='floors' type={"number"} contentLeft={<GiLevelEndFlag />} /> <br/><br/><br/>
+          <Input onChange={(e) => setpayment_date(e.target.value)} fullWidth bordered type={"date"} value={payment_date} labelPlaceholder='Payment date' contentLeft={<BsCalendar2Date />} /> <br/><br/><br/>
+          <Input onChange={(e) => setcommittee_monthly(+e.target.value)} clearable fullWidth bordered labelPlaceholder='House committee rate' type={"number"}contentLeft={<GiTakeMyMoney />} />
+          </Grid>
+          </Grid.Container>
         </Modal.Body>
         <Modal.Footer>
           <Button auto onPress={() => setVisible(false)} onClick={() => handleConfetti()}>

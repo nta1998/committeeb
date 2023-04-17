@@ -35,7 +35,7 @@ function App() {
   const chatSocket = useAppSelector(selectchatSocket)
 
   const color = useAppSelector(seleccolor)
-  const token = localStorage.getItem("access") || ""
+  const token = localStorage.getItem("access") || sessionStorage.getItem("access")||""
   const flagAd = useAppSelector(selecAdsflag)
 ///////// profile////////
 useEffect(() => {
@@ -142,10 +142,10 @@ if (userConfirmed) {
   })
 
   useEffect(() => {
-    dispatch(refreshAsync(localStorage.getItem('refresh') || ""))
+    dispatch(refreshAsync(localStorage.getItem("refresh") || sessionStorage.getItem("refresh")||""))
   }, [])
   useEffect(() => {
-    const token = localStorage.getItem("access") || ""
+    const token = localStorage.getItem("access") || sessionStorage.getItem("access")||""
     if (is_login){
     dispatch(getAsync(token))
     setTimeout(() => {
@@ -159,7 +159,7 @@ if (userConfirmed) {
         <NavbarC />
         <br />
         <ToastContainer
-          
+          limit={1}
           position="bottom-right"
           autoClose={5000}
           hideProgressBar={false}

@@ -32,4 +32,11 @@ export const delVote=(id:number,token:string)=>{
     }}).then(res => resolve({ data: res.data })).catch(error => {reject(error);})
   );
 }
+export const winVote=(data:any)=>{
+  return new Promise<{ data: Vote[] }>((resolve,reject) =>
+    axios.put('http://127.0.0.1:8000/vote/win/'+data.win.id,{data},{ headers: {
+      'Authorization':`Bearer ${data.token}`
+    }}).then(res => resolve({ data: res.data })).catch(error => {reject(error);})
+  );
+}
 

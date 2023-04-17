@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { toast } from 'react-toastify';
-import { add, delVote, editVote, get } from '../Api/voteAPI';
+import { add, delVote, editVote, get, winVote } from '../Api/voteAPI';
 import { RootState } from '../app/store';
 import { Vote } from '../model/vote';
 
@@ -42,6 +42,13 @@ export const delVoteAsync = createAsyncThunk(
   async (data: any) => {
     console.log(data)
     const response = await delVote(data.id, data.token);
+    return response.data;
+  }
+);
+export const winVoteAsync = createAsyncThunk(
+  'vote/winVote',
+  async (data: any) => {
+    const response = await winVote(data);
     return response.data;
   }
 );
