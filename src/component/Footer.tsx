@@ -1,6 +1,5 @@
 import React from "react";
 import { Row, Container, Col, Text, Card, Grid } from "@nextui-org/react";
-import { FacebookOutlined, GithubOutlined, InstagramOutlined, LinkedinOutlined } from '@ant-design/icons';
 import icon from "../static/img/icon.png"
 import { Link } from "react-router-dom";
 import { SocialIcon } from 'react-social-icons';
@@ -38,6 +37,11 @@ const FooterComponent = () => {
             <Link to={"/Ads"}><Text>Pool</Text></Link>
             <Link to={"/Ads"}><Text>Ads</Text></Link>
             <Link to={"/Ads"}><Text>ads</Text></Link>
+          </Col>
+          </Grid>
+          <Grid>
+          <Col style={{ padding: '1%', width: "10%" }}>
+            <Link to={"/About"}><Text>About</Text></Link>
           </Col>
           </Grid>
         </Row>

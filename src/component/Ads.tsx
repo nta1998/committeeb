@@ -1,5 +1,4 @@
-
-import React, {useState } from 'react'
+import React from 'react'
 import {
   selecads,
   selecpayads,
@@ -21,7 +20,7 @@ const Ads = () => {
   const dispatch = useAppDispatch();
 
   return (
-    <Container gap={0} style={{ paddingTop: "2%" }}>
+    <Container>
       <Col style={{ padding: "4%" }}>
         <Col>
           <Col>
@@ -33,7 +32,7 @@ const Ads = () => {
               <Container>
                 <Row>
                   {ads.filter(ads => ads.building_id === profile.building_id?.id).length <= 0 ? <Badge size={"lg"}>No ads yet</Badge> : ads.filter(ads => ads.building_id === profile.building_id?.id).map((ad, index) =>
-                    <Card css={{ maxWidth: "330px", minWidth: "300px", margin: "1%" }}>
+                    <Card key={index} css={{ maxWidth: "330px", minWidth: "300px", margin: "1%" }}>
                       <Card.Header>
                         <Text b >{ad.Title}</Text>
                       </Card.Header>
@@ -60,7 +59,7 @@ const Ads = () => {
               <Container>
                 <Row>
                   {pool.filter(pool => pool.building_id === profile.building_id?.id).length <= 0 ? <Badge size={"lg"}>No survey to view yet</Badge> : pool.filter(pool => pool.building_id === profile.building_id?.id).map((pool, index) =>
-                    <Card css={{ margin: "1%", maxWidth: "330px", minWidth: "330px" }}>
+                    <Card key={index} css={{ margin: "1%", maxWidth: "330px", minWidth: "330px" }}>
                       <Card.Header>
                         <Text b>{pool.Title}</Text>
                       </Card.Header>
