@@ -25,7 +25,7 @@ const initialState: CounterState = {
   pop: false,
   online: [],
   //  chatSocket: new WebSocket(`wss://127.0.0.1:8000/ws/chat/${profile.building_id?.id}/${profile.id}/`)
-  chatSocket: new WebSocket(`ws://127.0.0.1:8000/ws/chat/${profile.building_id?.id}/${profile.id}/`)
+  chatSocket: new WebSocket(`wss://${process.env.REACT_APP_WEBSOCKET}ws/chat/${profile.building_id?.id}/${profile.id}/`)
 };
 
 export const chatSlice = createSlice({
