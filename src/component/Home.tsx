@@ -28,9 +28,9 @@ const Home = () => {
   const token = localStorage.getItem("access") || ""
   const dispatch = useAppDispatch();
   const profile = useAppSelector(selectGetProfileOne)
-  const ads = useAppSelector(selecads).filter(ad => ad.building_id === profile?.building_id?.id).pop()
-  const pool = useAppSelector(selecpool).filter(pool => pool.building_id === profile?.building_id?.id).pop()
-  const payads = useAppSelector(selecpayads).filter(payads => payads.building_id === profile?.building_id?.id).pop()
+  const ads = useAppSelector(selecads).filter(ad => ad?.building_id === profile?.building_id?.id).pop()
+  const pool = useAppSelector(selecpool).filter(pool => pool?.building_id === profile?.building_id?.id).pop()
+  const payads = useAppSelector(selecpayads).filter(payads => payads?.building_id === profile?.building_id?.id).pop()
   const products = useAppSelector(selecproduct);
 
   const [visible, setVisible] = useState(false);
