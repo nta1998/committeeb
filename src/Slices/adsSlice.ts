@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice} from '@reduxjs/toolkit';
 import { toast } from 'react-toastify';
-import { get, add, getPayAds, getPool, addPool, addPayAds, editPool } from '../Api/adsAPI';
+import { get, add, getPayAds, getPool, addPool, addPayAds, editPool, delPayAds, delAds, delPool } from '../Api/adsAPI';
 import { RootState } from '../app/store';
 import { Ads, Payads, Pool } from '../model/ads';
 
@@ -41,8 +41,14 @@ export const addpoolAsync = createAsyncThunk(
 export const addVoteAsync = createAsyncThunk(
   'ads/editPool',
   async (pool: any) => {
-
     const response = await editPool(pool.pool,pool.token,pool.action,pool.profile);
+    return response.data;
+  }
+);
+export const delPoolAsync = createAsyncThunk(
+  'ads/delPool',
+  async (data:any) => {
+    const response = await delPool(data.token,data.id);
     return response.data;
   }
 );
@@ -60,7 +66,13 @@ export const addadlAsync = createAsyncThunk(
     return response.data;
   }
 );
-
+export const deladlAsync = createAsyncThunk(
+  'ads/delAds',
+  async (data:any) => {
+    const response = await delAds(data.token,data.id);
+    return response.data;
+  }
+);
 export const getpayadsAsync = createAsyncThunk(
   'ads/getPayAds',
   async (token: string) => {
@@ -75,7 +87,13 @@ export const addpayadsAsync = createAsyncThunk(
     return response.data;
   }
 );
-
+export const delpayadsAsync = createAsyncThunk(
+  'ads/delPayAds',
+  async (data:any) => {
+    const response = await delPayAds(data.token,data.id);
+    return response.data;
+  }
+);
 
 
 export const adsSlice = createSlice({
@@ -133,6 +151,27 @@ export const adsSlice = createSlice({
         toast.success("Thank you for voting");
       })
       .addCase(addVoteAsync.rejected, (state, action) => {
+        toast.error("Error Occurred.\n Please try again later");
+      })
+      .addCase(delPoolAsync.fulfilled, (state, action) => {
+        state.ref = !state.ref
+        toast.success("The survey has been successfully deleted");
+      })
+      .addCase(delPoolAsync.rejected, (state, action) => {
+        toast.error("Error Occurred.\n Please try again later");
+      })
+      .addCase(deladlAsync.fulfilled, (state, action) => {
+        state.ref = !state.ref
+        toast.success("The ad has been successfully deleted");
+      })
+      .addCase(deladlAsync.rejected, (state, action) => {
+        toast.error("Error Occurred.\n Please try again later");
+      })
+      .addCase(delpayadsAsync.fulfilled, (state, action) => {
+        state.ref = !state.ref
+        toast.success("The payment ad has been successfully deleted");
+      })
+      .addCase(delpayadsAsync.rejected, (state, action) => {
         toast.error("Error Occurred.\n Please try again later");
       })
   }

@@ -3,12 +3,16 @@ import {
   selecads,
   selecpayads,
   selecpool,
-  addVoteAsync
+  addVoteAsync,
+  delpayadsAsync,
+  deladlAsync,
+  delPoolAsync
 } from '../Slices/adsSlice'
 import { useAppDispatch, useAppSelector } from '../app/hooks';
 import { Card, Text, Row, Button, Container, Col, Badge } from "@nextui-org/react";
 import { selectGetProfileOne } from '../Slices/profileSlice';
 import { addPaymentAdToCart } from '../Slices/productSlice';
+import { BiTrash } from 'react-icons/bi';
 
 
 const Ads = () => {
@@ -35,6 +39,7 @@ const Ads = () => {
                     <Card key={index} css={{ maxWidth: "330px", minWidth: "300px", margin: "1%" }}>
                       <Card.Header>
                         <Text b >{ad.Title}</Text>
+                        {profile.is_committee ?<BiTrash style={{position:"absolute" ,right:"5%",cursor:'pointer'}} onClick={()=>dispatch(deladlAsync({token,id:ad.id}))}/>:""}
                       </Card.Header>
                       <Card.Divider />
                       <Card.Body>
@@ -61,7 +66,8 @@ const Ads = () => {
                   {pool.filter(pool => pool.building_id === profile.building_id?.id).length <= 0 ? <Badge size={"lg"}>No survey to view yet</Badge> : pool.filter(pool => pool.building_id === profile.building_id?.id).map((pool, index) =>
                     <Card key={index} css={{ margin: "1%", maxWidth: "330px", minWidth: "330px" }}>
                       <Card.Header>
-                        <Text b>{pool.Title}</Text>
+                          <Text b>{pool.Title}</Text>                        
+                          {profile.is_committee ?<BiTrash style={{position:"absolute" ,right:"5%",cursor:'pointer'}} onClick={()=>dispatch(delPoolAsync({token,id:pool.id}))}/>:""}
                       </Card.Header>
                       <Card.Divider />
                       <Card.Body>
@@ -98,6 +104,7 @@ const Ads = () => {
                     <Card key={index} css={{ maxWidth: "330px", minWidth: "300px", margin: "1%" }}>
                       <Card.Header>
                         <Text b>{ads.Title} </Text>
+                        {profile.is_committee ?<BiTrash style={{position:"absolute" ,right:"5%",cursor:'pointer'}} onClick={()=>dispatch(delpayadsAsync({token,id:ads.id}))}/>:""}
                       </Card.Header>
                       <Card.Divider />
                       <Card.Body>

@@ -1,7 +1,7 @@
 import axios from "axios";
 import { Profile } from "../model/profile";
 import { post } from "../model/post";
-const MY_server='https://committeeb.com/'
+const MY_server= process.env.REACT_APP_MY_SERVER
 // A mock function to mimic making an async request for data
 
 export const profileget=(token:string)=>{

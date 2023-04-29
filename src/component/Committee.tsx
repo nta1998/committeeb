@@ -45,7 +45,6 @@ const Committee = () => {
   useEffect(() => {
   setlink_sing_up(`https://main.d26h4905dv8gvt.amplifyapp.com/singup/31214/${profile.building_id?.id}/312`)
   setpayment_date((profile.building_id?.payment_date)?.toString()||"")
-  console.log(profile)
   }, [BuildingFlag,selecflagProfile])
   
   const saveEdit = () => {
@@ -108,22 +107,25 @@ const Committee = () => {
   }, [pool, selected])
 
   const vote_win=()=>{
+    if (building?.vote_active){
     let vote_num = 0
     let win:any = null
-    dispatch(voteActivAsync({ "building": profile.building_id, token }))
     for(let item of all_vote){
+      console.log(item)
       if (item.vote > vote_num){
         win = item
         vote_num = item.vote
       }
     }
-    let winer = all_profiles.find(pro => pro.id === win.id)
+    let winer = all_profiles.find(pro => pro.id === win.profile_id.id)
     console.log(winer)
-    dispatch(winVoteAsync({win,profile,token}))
+    dispatch(winVoteAsync({winer,profile,token}))}
+    dispatch(voteActivAsync({ "building": profile.building_id, token }))
   }
 
   return (
     <>
+    {profile.is_committee ? <>
       <Modal
         closeButton
         aria-labelledby="modal-title"
@@ -333,9 +335,9 @@ const Committee = () => {
       <br/>
       <br/>
       <br/>
-</Col>
+</Col></>: <Row justify='center' css={{p:'10%'}}><Badge size={'xl'}>You are not the house committee maybe in the next election</Badge></Row>}
     </>
-  );
+  )
 }
 
 

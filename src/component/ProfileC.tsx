@@ -43,7 +43,7 @@ const ProfileC = () => {
       <Col>{!edit ?
         <Col>
           <Col>
-            <User src={'https://committeeb.com/static' + data.profile_pic} name={data.full_name} size="xl" />
+            <User src={`${process.env.REACT_APP_MY_SERVER}static` + data.profile_pic} name={data.full_name} size="xl" />
             <br />
             <Col style={{ padding: '1% 25%' }}>
               <Text h4 size={20} css={{ textGradient: "45deg, $blue600 -20%, $pink600 50%", }} weight="bold">Address</Text>
@@ -85,11 +85,12 @@ const ProfileC = () => {
                 <br />
                 <br />
                 <Text>Address</Text>
-                <Input disabled={!data.is_committee ? true :false} width='60%' placeholder={data.building_id?.full_address} onChange={(e) => setAddress(e.target.value)} />
+                <Input disabled={true} width='60%' placeholder={data.building_id?.full_address} onChange={(e) => setAddress(e.target.value)} />
                 <br />
                 <br />
                 <Text>Apartment</Text>
                 <Input width='10%' placeholder={data.apartment} type={"number"} onChange={(e) => setApartment(e.target.value)} />
+                <br />
                 <br />
                 <Text>Email</Text>
                 <Input width='60%' placeholder={data.user} onChange={(e) => setEmail(e.target.value)} />
@@ -97,6 +98,7 @@ const ProfileC = () => {
                 <br />
                 <Text>Phone number</Text>
                 <Input width='30%' placeholder={data.phone_number} style={{ width: '8%' }} onChange={(e) => setPhone_number(e.target.value)} />
+                <br />
                 <br />
                 <Text>bio</Text>
                 <Textarea width='60%' rows={4} placeholder={data.bio} onChange={(e) => setbio(e.target.value)} />

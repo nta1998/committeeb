@@ -66,7 +66,7 @@ const Store = () => {
           <Row>
             <Col>
               <Image
-                src={`https://committeeb.com/static${product_selected?.product_pic}`}
+                src={`${process.env.REACT_APP_MY_SERVER}static`+product_selected?.product_pic}
                 css={{ maxWidth: "400px", minWidth: "140px", maxHeight: "300px" }} />
               <br />
               <Text h5 b style={{ marginLeft: "10%" }}>price : {product_selected?.price}₪</Text>
@@ -179,7 +179,7 @@ const Store = () => {
                   <Card key={index} onClick={() => modelView(product)} style={{ minWidth: window.innerWidth < 950 ? "170px" : "200px", maxWidth: window.innerWidth < 950 ? "170px" : "230px", maxHeight: "200px"}} isPressable>
                     <Card.Body css={{ p: 0 }}>
                       <Card.Image
-                        src={`https://committeeb.com/static${product.product_pic}`}
+                        src={`${process.env.REACT_APP_MY_SERVER}static`+product.product_pic}
                         objectFit="cover"
                         width="100%"
                         height={200}

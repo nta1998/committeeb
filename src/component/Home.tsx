@@ -1,8 +1,8 @@
-import { Container, Row, Col, Card, Text, Button, Grid, Badge, Modal, Input, Loading } from '@nextui-org/react';
+import { Container, Row, Col, Card, Text, Button, Grid, Badge, Modal, Input} from '@nextui-org/react';
 import { Link } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../app/hooks';
 import { selectlog, singupbuildingAsync } from '../Slices/loginSlice';
-import React, { useEffect, useState } from 'react';
+import React, {useState} from 'react';
 import { addVoteAsync, selecads, selecpayads, selecpool } from '../Slices/adsSlice';
 import { addPaymentAdToCart, addToCart, selecproduct } from '../Slices/productSlice';
 import Bulletin_Board from "../static/img/Bulletin_Board.jpg"
@@ -55,7 +55,7 @@ const Home = () => {
     confetti({ decay: 0.9, particleCount: 1000, spread: 360, ticks: 200, zIndex: 100 })
     dispatch(singupbuildingAsync({ "user": { username, email, password }, "building": { full_address, floors, payment_date, committee_monthly, "committee_apartment": apartment, "committee_name": full_name, "committee_phone": phone_number }, "profile": { full_name, bio, apartment, phone_number, pic, } }))
   };
-
+  
   return (
     <Container>
       {is_login ? 
@@ -189,7 +189,7 @@ const Home = () => {
                   <Card onClick={() => dispatch(addToCart(product))} style={{ minWidth: window.innerWidth < 950 ? "130px" : "170px", maxWidth: window.innerWidth < 950 ? "130px" : "170px", minHeight: window.innerWidth < 950 ? "110px" : "200px", maxHeight: window.innerWidth < 950 ? "130px" : "200px" }} isPressable>
                     <Card.Body css={{ p: 0 }}>
                       <Card.Image
-                        src={`https://committeeb.com${product.product_pic}`}
+                        src={`${process.env.REACT_APP_MY_SERVER}static`+product.product_pic}
                         objectFit="cover"
                         width="100%"
                         height={200}
@@ -247,7 +247,7 @@ const Home = () => {
                         <Row>
                           <Col>
                             <Text color="#d1d1d1" size={20} b>
-                              get start today and singup to the The digital committee
+                              get start today and signup to the The digital committee
                             </Text>
                           </Col>
                         </Row>
@@ -256,7 +256,7 @@ const Home = () => {
                         <Row justify="flex-end">
                           <Button type='button' onClick={() => setVisible(true)} flat auto rounded css={{ color: "#f0b59c", bg: "#94f9f026" }}>
                             <Text css={{ color: "inherit" }} size={15} weight="bold">
-                              Sing Up
+                              Sign Up
                             </Text>
                           </Button>
                         </Row>
@@ -372,7 +372,7 @@ const Home = () => {
       >
         <Modal.Header>
             <Text b size={18}><br />
-            Sing Up your building
+            Sign Up your building
             </Text>
         </Modal.Header>
         <Modal.Body>

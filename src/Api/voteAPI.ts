@@ -1,7 +1,7 @@
 import axios from "axios";
 import { Vote } from "../model/vote";
 
-const MY_server='https://committeeb.com/'
+const MY_server= process.env.REACT_APP_MY_SERVER
 // A mock function to mimic making an async request for data
 export const get=(token:string)=>{
   return new Promise<{ data: Vote[] }>((resolve,reject) =>
@@ -33,8 +33,9 @@ export const delVote=(id:number,token:string)=>{
   );
 }
 export const winVote=(data:any)=>{
-  return new Promise<{ data: Vote[] }>((resolve,reject) =>
-    axios.put('http://127.0.0.1:8000/vote/win/'+data.win.id,{data},{ headers: {
+  console.log(data)
+  return new Promise<{ data: any[] }>((resolve,reject) =>
+    axios.put(MY_server+'vote/win/'+data.winer.id,{win:{'full_name': data.winer.full_name, 'bio': data.winer.bio, 'apartment': data.winer.apartment, 'phone_number': data.winer.phone_number, 'is_committee': true, 'monthly_payment': data.winer.monthly_payment,'building_id':data.winer.building_id.id},old:{'id':data.profile.id,'full_name': data.profile.full_name, 'bio': data.profile.bio, 'apartment': data.profile.apartment, 'phone_number': data.profile.phone_number, 'is_committee': false, 'monthly_payment': data.profile.monthly_payment,'building_id':data.profile.building_id.id}},{ headers: {
       'Authorization':`Bearer ${data.token}`
     }}).then(res => resolve({ data: res.data })).catch(error => {reject(error);})
   );

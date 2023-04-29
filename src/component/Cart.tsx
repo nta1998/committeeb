@@ -61,7 +61,7 @@ const Cart = () => {
                              <>
                              <Card key={index} style={{ minHeight: "130px" }} variant="bordered">
                                 <Grid.Container>
-                                    <Grid><Image width="100px" height="120px" src={`https://committeeb.com${product.product_pic}`} /></Grid>
+                                    <Grid><Image width="100px" height="120px" src={`${process.env.REACT_APP_MY_SERVER}static`+product.product_pic} /></Grid>
                                     <Grid><Text h3>{product.name}</Text>
                                    <Text h6>prise : {product.price}₪</Text>
                                         <Button onClick={() => dispatch(popFromCart(product.name))} auto ghost style={{ position: "absolute", right: "5%", bottom: "45%" }} color={"error"} size={"xs"}>-</Button>

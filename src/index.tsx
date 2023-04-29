@@ -19,6 +19,7 @@ import About from './component/About'
 import "primereact/resources/themes/lara-light-indigo/theme.css"    
 import "primereact/resources/primereact.min.css"
 import "primeicons/primeicons.css"                                       
+import How_to_use from './component/How_to_use'
 
 
 const container = document.getElementById('root')!
@@ -34,6 +35,7 @@ root.render(
             <Route index element={<Home />} />
             <Route index path="/Home" element={<Home />} />
             <Route path="/About" element={<About/>} />
+            <Route path="/How_to_use" element={<How_to_use/>} />
             <Route path="/Ads" element={<Ads />} />
             <Route path="/Chat" element={<Chat />} />
             <Route path="/vote" element={<Vote />} />

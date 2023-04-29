@@ -93,7 +93,7 @@ const NavbarC = () => {
                   as="button"
                   color="secondary"
                   size="md"
-                  src={"https://committeeb.com/static" + profile?.profile_pic} />
+                  src={`${process.env.REACT_APP_MY_SERVER}static` + profile?.profile_pic} />
               </Dropdown.Trigger>
             </Navbar.Item>
             <Dropdown.Menu
@@ -123,47 +123,68 @@ const NavbarC = () => {
                   Monthly payment
                 </Text>
               </Dropdown.Item>
+              <Dropdown.Item key="Beginner's Guide" withDivider className="nav-link active">
+                <Link to="/How_to_use">
+                  <Text>
+                    Beginner's Guide
+                  </Text>
+                </Link>
+              </Dropdown.Item>
               <Dropdown.Item withDivider color="error" >
                 <Text onClick={() => singuot()} color='error'>Log Out</Text>
               </Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown> </>
           :
-          <Navbar.Item>
-            <div>
-              <Button auto flat color="secondary" onPress={handler}>
-                Sing in
+          <Navbar.Content>
+            <Navbar.Item>
+              <Button auto flat color="gradient">
+              <Link to='/How_to_use'>   
+              <Text  b color='white'>
+                    Beginner's Guide
+               </Text>
+                </Link>
               </Button>
-              <Modal
-                closeButton
-                aria-labelledby="modal-title"
-                open={visible}
-                width={window.innerWidth < 950 ? "80%" : "25%"}
-                onClose={closeHandler}>
-                <Modal.Header>
-                  <Text id="modal-title" size={18}>
-                    Welcome
-                    <br />
-                    <Text b size={18}>
-                      To digital committee
+         
+           
+            </Navbar.Item>
+            <Navbar.Item>
+              <div>
+                <Button auto flat color="secondary" onPress={handler}>
+                  Sign in
+                </Button>
+                <Modal
+                  closeButton
+                  aria-labelledby="modal-title"
+                  open={visible}
+                  width={window.innerWidth < 950 ? "80%" : "25%"}
+                  onClose={closeHandler}>
+                  <Modal.Header>
+                    <Text id="modal-title" size={18}>
+                      Welcome
+                      <br />
+                      <Text b size={18}>
+                        To digital committee
+                      </Text>
                     </Text>
-                  </Text>
-                </Modal.Header>
-                <Modal.Body>
-                  <Input onChange={(e) => setusername(e.target.value)} clearable fullWidth bordered placeholder='Username' contentLeft={<AiOutlineUser />} />
-                  <Input.Password onChange={(e) => setpassword(e.target.value)} clearable fullWidth bordered placeholder='Password' contentLeft={<RiLockPasswordFill />} />
-                  <Row justify="space-between">
-                    <Checkbox onClick={() => dispatch(remember())}><Text size={14}>Remember me</Text></Checkbox>
-                  </Row>
-                </Modal.Body>
-                <Modal.Footer>
-                  <Button color="secondary" auto ghost onPress={() => dispatch(loginAsync({ username, password }))}>
-                    Sign in
-                  </Button>
-                </Modal.Footer>
-              </Modal>
-            </div>
-          </Navbar.Item>}
+                  </Modal.Header>
+                  <Modal.Body>
+                    <Input onChange={(e) => setusername(e.target.value)} clearable fullWidth bordered placeholder='Username' contentLeft={<AiOutlineUser />} />
+                    <Input.Password onChange={(e) => setpassword(e.target.value)} clearable fullWidth bordered placeholder='Password' contentLeft={<RiLockPasswordFill />} />
+                    <Row justify="space-between">
+                      <Checkbox onClick={() => dispatch(remember())}><Text size={14}>Remember me</Text></Checkbox>
+                    </Row>
+                  </Modal.Body>
+                  <Modal.Footer>
+                    <Button color="secondary" auto ghost onPress={() => dispatch(loginAsync({ username, password }))}>
+                      Sign in
+                    </Button>
+                  </Modal.Footer>
+                </Modal>
+              </div>
+            </Navbar.Item>
+          </Navbar.Content>
+        }
         <Navbar.Collapse>
           <Navbar.Link href='/home'><Text size={30} css={{ textGradient: "45deg, $pink600 -10%, $blue600 80%" }} weight="bold">Home</Text></Navbar.Link>
           <Navbar.Link href="/Ads"><Text size={30} css={{ textGradient: "45deg, $pink600 -10%, $blue600 80%" }} weight="bold">Ads</Text></Navbar.Link>

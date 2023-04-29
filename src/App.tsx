@@ -181,8 +181,8 @@ function App() {
           pauseOnHover
           theme={color ? "dark" : "light"} />
                {loder ?
-          <Row justify='center' css={{p:'30%'}}>
-            <Loading type="points" size='xl'/>
+          <Row justify='center' css={{p:'20%'}}>
+            <Loading type="points" loadingCss={{ $$loadingSize: "30px", $$loadingBorder: "10px" }} color="secondary"/>
           </Row>:
         <Outlet />}
         <br />
