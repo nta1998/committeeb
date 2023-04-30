@@ -2,7 +2,7 @@ import { Container, Row, Col, Card, Text, Button, Grid, Badge, Modal, Input} fro
 import { Link } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../app/hooks';
 import { selectlog, singupbuildingAsync } from '../Slices/loginSlice';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import { addVoteAsync, selecads, selecpayads, selecpool } from '../Slices/adsSlice';
 import { addPaymentAdToCart, addToCart, selecproduct } from '../Slices/productSlice';
 import Bulletin_Board from "../static/img/Bulletin_Board.jpg"
@@ -22,23 +22,31 @@ import confetti from 'canvas-confetti';
 import { selectGetProfileOne } from '../Slices/profileSlice';
 import { GiLevelEndFlag, GiTakeMyMoney } from 'react-icons/gi';
 import { BsCalendar2Date } from 'react-icons/bs';
+import { Ads, Payads, Pool } from '../model/ads';
 
 const Home = () => {
   const is_login = useAppSelector(selectlog)
   const token = localStorage.getItem("access") || ""
   const dispatch = useAppDispatch();
   const profile = useAppSelector(selectGetProfileOne)
-  const ads = useAppSelector(selecads).filter(ad => ad?.building_id === profile?.building_id?.id).pop()
-  const pool = useAppSelector(selecpool).filter(pool => pool?.building_id === profile?.building_id?.id).pop()
-  const payads = useAppSelector(selecpayads).filter(payads => payads?.building_id === profile?.building_id?.id).pop()
+  const ads1 = useAppSelector(selecads)
+  const pool1 = useAppSelector(selecpool)
+  const payads1 = useAppSelector(selecpayads)
+  const [ads, setads] = useState<Ads>()
+  const [pool, setpool] = useState<Pool>()
+  const [payads, setpayads] = useState<Payads>()
   const products = useAppSelector(selecproduct);
+useEffect(() => {
+  setads(ads1.filter(ad => ad?.building_id === profile?.building_id?.id).pop())
+  setpool(pool1.filter(pool => pool?.building_id === profile?.building_id?.id).pop())
+  setpayads(payads1.filter(payads => payads?.building_id === profile?.building_id?.id).pop())
+}, [])
 
   const [visible, setVisible] = useState(false);
   const closeHandler = () => {
     setVisible(false);
     console.log("closed");
   };
-
   const [username, setusername] = useState("")
   const [email, setemail] = useState("")
   const [password, setpassword] = useState("")
