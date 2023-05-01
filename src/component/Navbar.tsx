@@ -45,7 +45,7 @@ const NavbarC = () => {
 
   return (
     <Navbar isBordered variant="static">
-      <Navbar.Toggle showIn="sm" aria-label="toggle navigation" />
+      {is_log ? <Navbar.Toggle showIn="sm" aria-label="toggle navigation" /> :""}
       <Navbar.Brand
         css={{ "@xs": { w: "15%" } }}>
         <Link to="/home" style={{ display: "flex" }}>
@@ -137,7 +137,7 @@ const NavbarC = () => {
           </Dropdown> </>
           :
           <Navbar.Content>
-            <Navbar.Item>
+            <Navbar.Item hideIn={"xs"}>
               <Button auto flat color="gradient">
               <Link to='/How_to_use'>   
               <Text  b color='white'>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Table, Row, Col, Tooltip, Text, Card, Button, Modal, Input, Badge, Dropdown, Grid } from "@nextui-org/react";
+import { Table, Row, Col, Tooltip, Text, Card, Button, Modal, Input, Badge, Dropdown, Grid, cssHideIn, cssHideShowIn } from "@nextui-org/react";
 import { editPayAsync, selecflagAdmin, selectGetProfile, selectGetProfileOne } from '../Slices/profileSlice';
 import { useAppDispatch, useAppSelector } from '../app/hooks';
 import { addadlAsync, addpayadsAsync, addpoolAsync, selecpool } from '../Slices/adsSlice';
@@ -335,7 +335,7 @@ const Committee = () => {
       <br/>
       <br/>
       <br/>
-</Col></>: <Row justify='center' css={{p:'10%'}}><Badge size={'xl'}>You are not the house committee maybe in the next election</Badge></Row>}
+</Col></>: <Row justify='center' css={{p:'10%'}}><Badge size={'xl'}>You are not the house committee<br style={{display: window.innerWidth < 950? "block":"none"}}/>maybe in the next election</Badge></Row>}
     </>
   )
 }
