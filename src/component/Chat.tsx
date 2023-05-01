@@ -20,7 +20,7 @@ const Chat = () => {
             const scroll = bottomRef.current.scrollHeight - bottomRef.current.clientHeight;
             bottomRef.current.scrollTo(0, scroll);
         }
-    }, [content])
+    }, [bottomRef, content])
 
     const sendM = () => {
         chatSocket.send(JSON.stringify({ "message": message, "profile_id": user?.id, "building_id": user?.building_id?.id, "command": "new_message" }))

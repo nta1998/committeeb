@@ -11,12 +11,14 @@ import { Player } from '@lottiefiles/react-lottie-player';
 import { addPaymentAdToCart, selecCart, selecPayAds } from '../Slices/productSlice';
 import { BsFillSunFill, BsFillMoonFill } from 'react-icons/bs';
 import icon from "../static/img/icon.png"
+import { selectchatSocket } from '../Slices/chatSlice';
 const NavbarC = () => {
   const profile = useAppSelector(selectGetProfileOne)
   const colorM = useAppSelector(seleccolor)
   const Cart = useAppSelector(selecCart)
   const payad = useAppSelector(selecPayAds)
   const is_log = useAppSelector(selectlog)
+  const chatSocket = useAppSelector(selectchatSocket)
 
   const [username, setusername] = useState("")
   const [password, setpassword] = useState("")
@@ -37,6 +39,7 @@ const NavbarC = () => {
   };
   const singuot = () => {
     setVisible(false)
+    chatSocket.close()
     dispatch(loguot())
   }
   const Monthly_payment = () => {

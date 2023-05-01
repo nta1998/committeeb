@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Table, Row, Col, Tooltip, Text, Card, Button, Modal, Input, Badge, Dropdown, Grid, cssHideIn, cssHideShowIn } from "@nextui-org/react";
+import { Table, Row, Col, Tooltip, Text, Card, Button, Modal, Input, Badge, Dropdown, Grid} from "@nextui-org/react";
 import { editPayAsync, selecflagAdmin, selectGetProfile, selectGetProfileOne } from '../Slices/profileSlice';
 import { useAppDispatch, useAppSelector } from '../app/hooks';
 import { addadlAsync, addpayadsAsync, addpoolAsync, selecpool } from '../Slices/adsSlice';
@@ -43,9 +43,9 @@ const Committee = () => {
   const flagVote = useAppSelector(selecVoteflag)
   const [selected, setSelected] = useState<any>("Select a survey to view")
   useEffect(() => {
-  setlink_sing_up(`https://main.d26h4905dv8gvt.amplifyapp.com/singup/31214/${profile.building_id?.id}/312`)
+  setlink_sing_up(`https://www.committeeb.com/singup/31214/${profile.building_id?.id}/312`)
   setpayment_date((profile.building_id?.payment_date)?.toString()||"")
-  }, [BuildingFlag,selecflagProfile])
+  }, [BuildingFlag, profile.building_id?.id, profile.building_id?.payment_date, selecflagProfile])
   
   const saveEdit = () => {
     dispatch(editAsync({
@@ -77,7 +77,7 @@ const Committee = () => {
     const options = { plugins: { legend: { labels: { usePointStyle: true } } } }
     setpaydata(data);
     setChartOptions(options);
-  }, []);
+  }, [all_profiles, profile.building_id?.id]);
 
   useEffect(() => {
     const data = {
@@ -89,7 +89,7 @@ const Committee = () => {
     const options = { plugins: { legend: { labels: { usePointStyle: true } } } }
     setvotedata(data);
     setChartOptions(options);
-  }, [flagVote]);
+  }, [all_vote, flagVote, profile.building_id?.id]);
 
   useEffect(() => {
     const data = {
@@ -104,7 +104,7 @@ const Committee = () => {
     const options = { plugins: { legend: { labels: { usePointStyle: true } } } }
     setpooldata(data);
     setChartOptions(options);
-  }, [pool, selected])
+  }, [pool, profile.building_id?.id, selected])
 
   const vote_win=()=>{
     if (building?.vote_active){

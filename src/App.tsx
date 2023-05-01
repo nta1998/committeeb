@@ -27,7 +27,7 @@ function App() {
   const [loder, setloder] = useState(false)
 
   const start = useAppSelector(selestart)
-
+  const [first, setfirst] = useState(true)
   const connect = useAppSelector(selectconnect)
   const content = useAppSelector(selectcontent)
   const pop = useAppSelector(selectpop)
@@ -103,13 +103,13 @@ function App() {
   }
   useEffect(() => {
     if (pop && content[content.length - 1]?.profile_id?.full_name !== profile.full_name) {
-      if (content[content.length - 1]?.profile_id?.full_name !== undefined){ 
+      setfirst(false)
+      if (content[content.length - 1]?.profile_id?.full_name !== undefined && !first){ 
       toast.info(`${content[content.length - 1]?.profile_id?.full_name} send a new message`, {
         position: "top-right", autoClose: 10000
-      })}
-    }
-
-  }, [content, content.length, pop, profile.full_name])
+      })}}
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [content])
 
   window.addEventListener('beforeunload', (e) => {
 
