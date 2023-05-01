@@ -8,6 +8,7 @@ In addition to financial management, the Home Management App also allows the hou
 Another key feature of the Home Management App is its ability to manage the building's control. The app provides a single interface for managing various aspects of the building, including maintenance requests, security access, and other essential functions. This feature helps the committee to respond quickly to tenant requests and ensure that the building is well-maintained and secure.
 
 ### Demo https://www.committeeb.com/
+The site test must be connected with username:test and password:1234
 ## Features
 
 - Manage building and its tenants through a single interface
