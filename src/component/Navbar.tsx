@@ -196,6 +196,7 @@ const NavbarC = () => {
           {profile?.building_id?.vote_active ? <Navbar.Link href="/vote"><Text size={30} css={{ textGradient: "45deg, $pink600 -10%, $blue600 80%" }} weight="bold">vote</Text></Navbar.Link> : ""}
           <Navbar.Link href="/Store"><Text size={30} css={{ textGradient: "45deg, $pink600 -10%, $blue600 80%" }} weight="bold">Store</Text></Navbar.Link>
           {profile?.is_committee ? <Navbar.Link href="/admin"><Text size={30} css={{ textGradient: "45deg, $pink600 -10%, $blue600 80%" }} weight="bold">admin</Text></Navbar.Link> : ""}
+          <Navbar.Link href='/How_to_use'><Text size={30} css={{ textGradient: "45deg, $pink600 -10%, $blue600 80%" }} weight="bold">Beginner's Guide</Text></Navbar.Link>
           <Navbar.Link href='/About'><Text size={30} css={{ textGradient: "45deg, $pink600 -10%, $blue600 80%" }} weight="bold">About</Text></Navbar.Link>
           <br />
           <Navbar.Item>
