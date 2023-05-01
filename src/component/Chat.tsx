@@ -1,5 +1,5 @@
 import React, { createRef, useEffect, useState } from 'react'
-import { Container, Card, Row, Text, Col, Input, User, Button, Badge } from "@nextui-org/react";
+import { Container, Card, Row, Text, Col, Input, User, Button, Badge, Loading } from "@nextui-org/react";
 import { selectGetProfileOne } from '../Slices/profileSlice';
 import { useAppSelector } from '../app/hooks';
 import { selectchatSocket, selectcontent, selectonline } from '../Slices/chatSlice';
@@ -50,14 +50,16 @@ const Chat = () => {
                         <Card.Body ref={bottomRef}>
                             <Container>
                                 <Col  >
-                                    {content.map((x, i) => <Row style={{ padding: '1% 0%', justifyContent: `${x.profile_id.id === user.id ? 'end' : ''}` }}>
+                                    {content.length ? content.map((x, i) => <Row style={{ padding: '1% 0%', justifyContent: `${x.profile_id.id === user.id ? 'end' : ''}` }}>
                                         <Card css={{ $$cardColor: `${x.profile_id.id === user.id ? '#17C964' : '#697177'}`, height: "auto", width: "auto", minWidth: "20%", maxWidth: "40%", position: "relative" }}>
                                             <Card.Body>
                                                 <Text h6>{x.profile_id.full_name}</Text>
                                                 <Text h4>{x.message}</Text>
                                             </Card.Body>
 
-                                        </Card></Row>)}
+                                        </Card></Row>) : <Row justify='center' css={{ p: '25%' }}>
+                                        <Loading type="gradient"  loadingCss={{ $$loadingSize: "30px", $$loadingBorder: "10px" }} color="secondary" />
+                                    </Row>}
                                 </Col>
                             </Container>
                         </Card.Body>

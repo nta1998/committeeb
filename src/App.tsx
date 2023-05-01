@@ -103,9 +103,10 @@ function App() {
   }
   useEffect(() => {
     if (pop && content[content.length - 1]?.profile_id?.full_name !== profile.full_name) {
+      if (content[content.length - 1]?.profile_id?.full_name !== undefined){ 
       toast.info(`${content[content.length - 1]?.profile_id?.full_name} send a new message`, {
         position: "top-right", autoClose: 10000
-      })
+      })}
     }
 
   }, [content, content.length, pop, profile.full_name])
